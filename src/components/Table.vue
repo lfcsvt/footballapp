@@ -1,0 +1,10 @@
+<template>
+    <table>
+        <thead>
+            <th></th>
+        </thead>
+    <tbody>
+        <tr></tr>
+    </tbody>
+    </table>
+</template>

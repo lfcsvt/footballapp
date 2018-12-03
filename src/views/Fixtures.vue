@@ -18,7 +18,6 @@
 export default {
   data(){
     return {
-      // matches: this.$parent.upcomingMatches
        matches: this.$route.params.matches
     }
   },
