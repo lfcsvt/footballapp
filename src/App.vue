@@ -2,7 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/fixtures">Fixtures</router-link>
+      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches }}">Fixtures</router-link>|
+      <router-link :to="{ name: 'standings', params: { results: this.standings }}">Standings</router-link>
     </div>
     <router-view/>
   </div>
@@ -15,6 +16,7 @@ export default {
       standings: [],
       upcomingMatches: [],
       scorers: [],
+      qualified: []
     }
   },
   methods: {
@@ -39,24 +41,43 @@ export default {
     });
 
     Promise.all(responseArray).then(allResults => {
-        console.log(allResults)
-        var teams = allResults[0].teams
-        var matches = allResults[1].matches
-        var upcomingMatches = allResults[2].matches
-        var standings = allResults[3].standings
-        var scorers = allResults[5].scorers
-        var UCL = allResults[4].seasons
-        console.log(teams)
-        console.log(matches)
-        console.log(upcomingMatches)
-        console.log(standings)
-        console.log(UCL)
-        console.log(scorers)
+        // console.log(allResults)
+       this.teams = allResults[0].teams
+        this.upcomingMatches = allResults[2].matches
+       this.standings = allResults[3].standings
+        this.scorers = allResults[5].scorers
+        // var UCL = allResults[4].seasons
+        // var matches = allResults[1].matches
+        console.log(this.teams)
+        console.log(this.upcomingMatches)
+        // console.log(this.standings)
+        // console.log(scorers)
+    })
+},
+  getQualified(){
+    var teams1 = []
+    this.upcomingMatches.forEach(match => {
+        this.qualified.push(match.awayTeam, match.homeTeam)
+        console.log(this.qualified)
+        return this.qualified
+        
+    
     })
 }
+
   },
   created(){
-    this.getData()
+    this.getData(),
+    this.getQualified()
+  },
+  computed:{
+    dataAreIn(){
+      return this.teams.length > 0
+      return this. standings.length > 0
+      return this.upcomingMatches.length > 0
+      return this.scorers.length > 0
+    
+    }
   }
   
 }
