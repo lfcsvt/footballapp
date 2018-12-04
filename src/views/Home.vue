@@ -1,8 +1,12 @@
 <template>
   <div class="home">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <Header msg="Meet the Best"/>
     <Header msg2="Experience greatness"/>
+    <div class="teams" v-for="team in teams">
+      <div class="team">
+       <p>{{team.tla}}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,6 +18,17 @@ export default {
   name: 'home',
   components: {
     Header
+  },
+  data(){
+    return {
+      teams: this.$route.params.teams
+    }
+  },
+  methods: {
+  
+  },
+  created(){
+   
   }
 }
 </script>
@@ -22,6 +37,24 @@ body {
 background-image: url(../assets/ucl4.jpg);
 background-size: cover;
 background-repeat: no-repeat;
+}
+p {
+  color: white;
+}
+.home {
+  background-size: contain;
+overflow: auto;
+height: 750px;
+width: 98%;
+}
+
+.teams {
+
+}
+
+img{
+  height: 25px;
+  width: 25px;
 }
 </style>
 

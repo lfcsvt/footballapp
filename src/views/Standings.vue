@@ -29,44 +29,51 @@
     </div>
 </template>
 <script>
+import Table from '@/components/Table.vue'
 export default {
     name: 'standings',
+    components:{
+        Table
+    },
     data(){
         return {
             results: this.$route.params.results,
             standings1: []
+        
+           
         }
     },
     created(){
-        // console.log(this.results)
-        this.getStandings()
+        this.getGroups()
+     
     },
-    methods: {
-        getStandings(){
+    methods: {    
+        getGroups(){
             var arr1 = []
             var arr2 = []
-            var standings1 = [] 
             this.results.forEach(result =>{
-                // console.log(result.table)
                 arr1 = result.table 
                 arr1.forEach(el => {
                     arr2.push(el)
                 })    
             })
-
             arr1.forEach(element=> {
                 arr2.push(element)
             })
             arr2.forEach(el => {
-                console.log(el.playedGames)
                 if(el.playedGames > 4){
                     this.standings1.push(el)
-                }
-                
+                }     
             })
-            // console.log(arr2)
-            console.log(this.standings1)
+                var groups = [];
+                while (this.standings1.length) {
+                groups.push(this.standings1.splice(0, 4));
+                     }
+        
+             console.log(groups)
+             return groups
         }
+
     }
 }
 </script>

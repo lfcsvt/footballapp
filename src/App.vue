@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
       <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches }}">Fixtures</router-link>|
       <router-link :to="{ name: 'standings', params: { results: this.standings }}">Standings</router-link>
     </div>
@@ -16,7 +16,8 @@ export default {
       standings: [],
       upcomingMatches: [],
       scorers: [],
-      qualified: []
+      qualified: [],
+      standings1: []
     }
   },
   methods: {
@@ -48,9 +49,9 @@ export default {
         this.scorers = allResults[5].scorers
         // var UCL = allResults[4].seasons
         // var matches = allResults[1].matches
-        console.log(this.teams)
+        // console.log(this.teams)
         // console.log(this.upcomingMatches)
-        console.log(this.standings)
+        // console.log(this.standings)
         // console.log(scorers)
     })
 },
@@ -58,16 +59,15 @@ export default {
     var teams1 = []
     this.upcomingMatches.forEach(match => {
         this.qualified.push(match.awayTeam, match.homeTeam)
-        console.log(this.qualified)
+        // console.log(this.qualified)
         return this.qualified
         
     
     })
 }
-
   },
   created(){
-    this.getData(),
+    this.getData()
     this.getQualified()
   },
   computed:{
