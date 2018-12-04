@@ -2,7 +2,7 @@
   <div class="home">
     <Header msg="Meet the Best"/>
     <Header msg2="Experience greatness"/>
-    <div class="teams" v-for="team in teams">
+    <div class="teams" v-for="(team, index) in teams" :key= 'index'>
       <div class="team">
        <p>{{team.tla}}</p>
       </div>

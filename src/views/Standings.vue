@@ -2,28 +2,29 @@
     <div class="standings">
     <div class="standings-box">
         <div class="group-box"><h5>Group A</h5>
+            <Table v-bind:group="groups[0]"/>
 
         </div>
         <div class="group-box"><h5>Group B</h5>
-
+         <Table v-bind:group="groups[1]"/>
         </div>
         <div class="group-box"><h5>Group C</h5>
-
+        <Table v-bind:group="groups[2]"/>
         </div>
         <div class="group-box"><h5>Group D</h5>
-
+        <Table v-bind:group="groups[3]"/>
         </div>
         <div class="group-box"><h5>Group E</h5>
-
+        <Table v-bind:group="groups[4]"/>
         </div>
         <div class="group-box"><h5>Group F</h5>
-
+        <Table v-bind:group="groups[5]"/>
         </div>
         <div class="group-box"><h5>Group G</h5>
-
+        <Table v-bind:group="groups[6]"/>
         </div>
         <div class="group-box"><h5>Group H</h5>
-
+            <Table v-bind:group="groups[7]"/>
         </div>
     </div>
     </div>
@@ -38,14 +39,12 @@ export default {
     data(){
         return {
             results: this.$route.params.results,
-            standings1: []
-        
-           
+            standings1: [],
+            groups: []
         }
     },
     created(){
-        this.getGroups()
-     
+        this.getGroups() 
     },
     methods: {    
         getGroups(){
@@ -65,13 +64,10 @@ export default {
                     this.standings1.push(el)
                 }     
             })
-                var groups = [];
+                
                 while (this.standings1.length) {
-                groups.push(this.standings1.splice(0, 4));
+                this.groups.push(this.standings1.splice(0, 4));
                      }
-        
-             console.log(groups)
-             return groups
         }
 
     }
@@ -91,8 +87,8 @@ width: 98%;
 
 .group-box {
 background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
- width: 60%;
- height: 150px;
+ width: 90%;
+ height: 220px;
  margin: auto;
  margin-bottom: 10px;
 }
@@ -100,6 +96,21 @@ background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,
 h1,h2,h3,h4,h5, p {
   color: white;
 }
-</style>
+table {
+     width: 310px;
+    height: 140px;
+    color: white;
+    border: 1px solid white;
+    margin-left: 10px;
+    align-content: flex-start;
+    
+
+}
+
+th, tr, td {
+    color: white;
+    border: 1px solid white;
+}
+ </style>
 
 

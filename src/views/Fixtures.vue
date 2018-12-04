@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="matches">
-        <div class="matchBox" v-for="match in matches" >
+        <div class="matchBox" v-for="(match, index) in matches" :key = 'index'>
           <h5>{{match.group}}</h5>
           <div class="teams">
             <p>{{match.homeTeam.name}}</p> 
@@ -18,11 +18,18 @@
 export default {
   data(){
     return {
-       matches: this.$route.params.matches
+       matches: this.$route.params.matches,
+       allTeams: this.$route.params.allTeams
     }
   },
   created(){
-    console.log()
+    console.log(this.matches)
+    this.getCrest()
+  },
+  methods: {
+    getCrest(){
+      
+    }
   }
 }
 </script>
