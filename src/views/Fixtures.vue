@@ -19,16 +19,32 @@ export default {
   data(){
     return {
        matches: this.$route.params.matches,
-       allTeams: this.$route.params.allTeams
+       allTeams: this.$parent.teams,
+       qualified: []
     }
   },
   created(){
-    console.log(this.matches)
+    this.getQualified()
     this.getCrest()
+    // console.log(this.matches)
   },
   methods: {
     getCrest(){
-      
+
+},
+      getQualified(){
+    this.matches.forEach(match => {
+        this.qualified.push(match.awayTeam, match.homeTeam)
+    })
+      // console.log(this.qualified)
+     return this.qualified
+}
+  },
+  computed: {
+    getTeamInfo(){
+        this.matches.filter(team => {
+          return team
+        })
     }
   }
 }

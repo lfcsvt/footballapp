@@ -1,10 +1,15 @@
 <template>
   <div id="app">
+      <!-- <div v-if="!dataAreIn">
+      <p>loading......</p>
+    </div> -->
+    <!-- <div v-else> -->
     <div id="nav">
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
-      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, allTeams: this.teams }}">Fixtures</router-link>|
+      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches}}">Fixtures</router-link>|
       <router-link :to="{ name: 'standings', params: { results: this.standings }}">Standings</router-link>
     </div>
+    <!-- </div> -->
     <router-view/>
   </div>
 </template>
@@ -16,7 +21,8 @@ export default {
       standings: [],
       upcomingMatches: [],
       scorers: [],
-      qualified: []
+      qualified: [],
+      // isLoading: true
     }
   },
   methods: {
@@ -46,37 +52,38 @@ export default {
         this.upcomingMatches = allResults[2].matches
        this.standings = allResults[3].standings
         this.scorers = allResults[5].scorers
+        // this.isLoading = false
         // var UCL = allResults[4].seasons
         // var matches = allResults[1].matches
         // console.log(this.teams)
-        // console.log(this.upcomingMatches)
+        console.log(this.upcomingMatches)
         // console.log(this.standings)
         // console.log(scorers)
     })
 },
   getQualified(){
     var teams1 = []
+     console.log(this.upcomingMatches)
     this.upcomingMatches.forEach(match => {
         this.qualified.push(match.awayTeam, match.homeTeam)
-        console.log(this.qualified)
     })
      return this.qualified
 }
   },
-  created(){
+  created(){ 
+    this.getQualified() 
     this.getData()
-    this.getQualified()
   },
   computed:{
-    dataAreIn(){
-      return this.teams.length > 0
-      return this. standings.length > 0
-      return this.upcomingMatches.length > 0
-      return this.scorers.length > 0
-    
-    }
-  }
-  
+    // datAreIn(){
+    //   return [
+    //     this.teams.length > 0,
+    //     this. standings.length > 0,
+    //     this.upcomingMatches.length > 0,
+    //     this.scorers.length > 0
+    //   ]  
+    // }
+}
 }
 </script>
 
