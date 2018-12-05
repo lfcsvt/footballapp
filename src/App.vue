@@ -55,7 +55,7 @@ export default {
         // this.isLoading = false
         // var UCL = allResults[4].seasons
         // var matches = allResults[1].matches
-        // console.log(this.teams)
+        console.log(this.teams)
         // console.log(this.upcomingMatches)
         // console.log(this.standings)
         // console.log(scorers)

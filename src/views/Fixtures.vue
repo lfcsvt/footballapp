@@ -61,8 +61,8 @@ crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
   created(){
     this.getQualified()
     this.getQTeams() 
-    console.log(this.matches) 
-    console.log(this.allTeams) 
+    // console.log(this.matches) 
+    // console.log(this.allTeams) 
   },
   methods: {
       getQualified(){
