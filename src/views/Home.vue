@@ -3,8 +3,7 @@
     <Header msg="Meet the Best"/>
     <Header msg2="Experience greatness"/>
     <div class="teams">
-      <div class="team">
-      </div>
+      <!-- <VPlayer/> -->
     </div>
   </div>
 </template>
@@ -12,11 +11,13 @@
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
+import VPlayer from '@/components/VPlayer.vue'
 
 export default {
   name: 'home',
   components: {
-    Header
+    Header, 
+    VPlayer
   },
   data(){
     return {

@@ -7,7 +7,8 @@
     <div id="nav">
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
       <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches}}">Fixtures</router-link>|
-      <router-link :to="{ name: 'standings', params: { results: this.standings }}">Standings</router-link>
+      <router-link :to="{ name: 'standings', params: { results: this.standings }}">Standings</router-link> |
+      <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link>
     </div>
     <!-- </div> -->
     <router-view/>
@@ -47,7 +48,7 @@ export default {
     });
 
     Promise.all(responseArray).then(allResults => {
-        // console.log(allResults)
+        console.log(allResults)
        this.teams = allResults[0].teams
         this.upcomingMatches = allResults[2].matches
        this.standings = allResults[3].standings
@@ -55,10 +56,10 @@ export default {
         // this.isLoading = false
         // var UCL = allResults[4].seasons
         // var matches = allResults[1].matches
-        console.log(this.teams)
+        // console.log(this.teams)
         // console.log(this.upcomingMatches)
         // console.log(this.standings)
-        // console.log(scorers)
+        console.log(this.scorers)
     })
 },
   getQualified(){

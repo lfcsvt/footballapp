@@ -94,6 +94,7 @@ background-size: contain;
 overflow: auto;
 height: 750px;
 width: 98%;
+margin-top: 5px;
 }
 .matches {
   overflow: auto;

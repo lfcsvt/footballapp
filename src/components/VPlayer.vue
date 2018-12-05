@@ -1,7 +1,7 @@
 <template>
-    <video preload="auto" width="480" height="270" 
+    <video preload="auto" width="360" height="270" 
   id="my-video">
-	<source src="" >
+	<source src="" type="video/mp4">
 </video>
 </template>
 <script>
@@ -21,6 +21,13 @@ export default {
 }
 </script>
 <style scoped>
+video {
+  -webkit-transition: 0.60s;
+  -moz-transition: 0.60s;
+  -o-transition: 0.60s;
+  -ms-transition: 0.60s;
+  
+}
 
 </style>
 

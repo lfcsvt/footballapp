@@ -57,6 +57,9 @@ img {
     height: 70px;
     width: 60px;
 }
+h5{
+    color: white;
+}
 
 </style>
 
