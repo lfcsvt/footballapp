@@ -56,14 +56,13 @@ export default {
         // var UCL = allResults[4].seasons
         // var matches = allResults[1].matches
         // console.log(this.teams)
-        console.log(this.upcomingMatches)
+        // console.log(this.upcomingMatches)
         // console.log(this.standings)
         // console.log(scorers)
     })
 },
   getQualified(){
     var teams1 = []
-     console.log(this.upcomingMatches)
     this.upcomingMatches.forEach(match => {
         this.qualified.push(match.awayTeam, match.homeTeam)
     })

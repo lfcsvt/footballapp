@@ -1,0 +1,50 @@
+
+<template>
+  <div class="match">
+          <h5>{{matchFromFix.group}}</h5>
+          <div class="teams">
+              <img :src=getHTeamLogo alt="">
+            <!-- <p>{{matchFromFix.homeTeam.name}}</p> -->
+            <!-- <p>{{getHomeVenue}}</p> -->
+            <p>X</p>
+            <img :src=getATeamLogo alt="">
+            <!-- <p>{{matchFromFix.awayTeam.name}}</p> -->
+          </div>
+              <p>{{matchFromFix.utcDate}}</p>
+              <p>{{getHomeVenue}}</p>
+          
+  </div>
+</template>
+<script>
+export default {
+  name: 'match',
+  props: ["matchFromFix", "allTeams"],
+  computed:{
+      getHomeVenue(){
+        var tempArr = this.allTeams.filter(team => team.id == this.matchFromFix.homeTeam.id);
+        return tempArr[0].venue
+      },
+      getHTeamLogo(){
+          var arr  = this.allTeams.filter(team => team.id == this.matchFromFix.homeTeam.id)
+          return arr[0].crestUrl
+      },
+         getATeamLogo(){
+          var arr  = this.allTeams.filter(team => team.id == this.matchFromFix.awayTeam.id)
+          return arr[0].crestUrl
+      }
+
+  }
+}
+</script>
+<style scoped>
+.teams {
+  display: flex;
+  justify-content: space-around;
+}
+img {
+    height: 70px;
+    width: 60px;
+}
+
+</style>
+

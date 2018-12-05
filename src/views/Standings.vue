@@ -113,14 +113,6 @@ crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
                   }).forEach(team2=> {
                     return item.team.crestUrl = team2.crestUrl
                   })
-
-                  //console.log("result: " + JSON.stringify(aa[0]) + "   //team " + item.team.name)
-
-                //   return aa[0].crestUrl
-                //   this.extraInfo.forEach(team=> {
-                //     //  console.log('Name' + team.name)
-                //     return item.team.crestUrl = team.crestUrl
-                //   })
               }
             })
         })
