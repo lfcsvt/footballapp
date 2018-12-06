@@ -8,7 +8,8 @@
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
       <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches}}">Fixtures</router-link>|
       <router-link :to="{ name: 'standings', params: { results: this.standings }}">Standings</router-link> |
-      <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link>
+      <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link> |
+      <router-link :to="{ name: 'teams', params: { qTeams: this.teams }}">Teams</router-link>
     </div>
     <!-- </div> -->
     <router-view/>

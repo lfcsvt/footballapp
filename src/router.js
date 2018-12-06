@@ -30,6 +30,11 @@ export default new Router({
       name: 'scorers',
       component: () => import(/* webpackChunkName: "scorers" */ './views/Scorers.vue')
      
+    },
+    {
+      path: '/teams',
+      name: 'teams',
+      component: ()=>import(/* webpackChunkName: "teams" */  './views/Teams.vue')
     }
   ]
 })

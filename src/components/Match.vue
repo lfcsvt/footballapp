@@ -40,9 +40,6 @@ export default {
         return b[0].crestUrl
           }
           return arr[0].crestUrl
-      },
-      getExtraCrest(){
-    
       }
 
   }
