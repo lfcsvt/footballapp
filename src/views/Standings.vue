@@ -140,6 +140,7 @@ background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,
  height: 220px;
  margin: auto;
  margin-bottom: 10px;
+ border-radius: 10px;
 }
 
 h1,h2,h3,h4,h5, p {

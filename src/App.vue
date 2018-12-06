@@ -6,10 +6,10 @@
     <!-- <div v-else> -->
     <div id="nav">
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
-      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches}}">Fixtures</router-link>|
+      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraInfor: this.extraInfo}}">Fixtures</router-link>|
       <router-link :to="{ name: 'standings', params: { results: this.standings }}">Standings</router-link> |
       <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link> |
-      <router-link :to="{ name: 'teams', params: { qTeams: this.teams }}">Teams</router-link>
+      <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.upcomingMatches }}">Teams</router-link>
     </div>
     <!-- </div> -->
     <router-view/>
@@ -24,7 +24,38 @@ export default {
       upcomingMatches: [],
       scorers: [],
       qualified: [],
-      // isLoading: true
+      allMatches: [],
+      extraInfo: [
+                {
+id: 851,
+name: 'Club Brugge KV',
+crestUrl: "https://s.glbimg.com/es/sde/f/original/2011/08/11/Brugge65.png" },
+
+{id: 7283,
+name: 'FK Crvena Zvezda',
+crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/Estrela_Vermelha65.png"},
+{id: 1899,
+name: 'PAE AEK',
+crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2017/10/14/AEKAtenas_65.png"},
+{id: 1871,
+name: 'BSC Young Boys',
+crestUrl:"https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/youngboys65.png" },
+{id: 1887,
+name: 'FK Shakhtar Donetsk',
+crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/12/shakhtar-donetsk.svg"},
+{id: 1881,
+name: 'FC Viktoria Plzeň',
+crestUrl: "https://s.glbimg.com/es/sde/f/original/2011/08/24/Viktoria_65x65.png"},
+{id: 1900,
+name: 'PFC CSKA Moskva',
+crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2017/12/03/CSKA-65.png"},
+{id: 5455,
+name: 'FK Lokomotiv Moskva',
+crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/lokomotivmoscou65.png"},
+{id: 1903,
+name: 'Sport Lisboa e Benfica',
+crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
+            ]
     }
   },
   methods: {
@@ -54,13 +85,15 @@ export default {
         this.upcomingMatches = allResults[2].matches
        this.standings = allResults[3].standings
         this.scorers = allResults[5].scorers
+        this.allMatches = allResults[1].matches
         // this.isLoading = false
         // var UCL = allResults[4].seasons
         // var matches = allResults[1].matches
         // console.log(this.teams)
         // console.log(this.upcomingMatches)
         // console.log(this.standings)
-        console.log(this.scorers)
+        // console.log(this.scorers)
+        console.log(this.allMatches)
     })
 },
   getQualified(){
@@ -69,11 +102,20 @@ export default {
         this.qualified.push(match.awayTeam, match.homeTeam)
     })
      return this.qualified
-}
+},
+ filterMatches(){
+      // var a = this.allMatches.filter(match => match.matchDay > 4)
+      this.allMatches.forEach(match=> {
+        console.log(match.matchDay)
+      })
+      // console.log(a)
+    }
   },
   created(){ 
     this.getQualified() 
     this.getData()
+    this.filterMatches()
+    console.log(this.allMatches)
   },
   computed:{
     // datAreIn(){

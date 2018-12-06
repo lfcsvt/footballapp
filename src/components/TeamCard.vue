@@ -1,64 +1,76 @@
 <template>
     <div class="team-box">
         <div class="header">
+            <img :src=getCrest alt="">
             <p>{{teamInCard.name}}</p>
-            <img :src=teamInCard.crestUrl alt="">
         </div>
         <div class="club-info">
             <p>Country: {{teamInCard.area.name}}</p>
-        <p>Founded in: {{teamInCard.founded}}</p>
+            <p>Founded in: {{teamInCard.founded}}</p>
         </div>
-         <p>Ground: {{teamInCard.venue}}</p>
+        <p>Ground: {{teamInCard.venue}}</p>
         <div class="contact"> Team Contact Info
-              <p>{{teamInCard.phone}}</p>
-             <p>{{teamInCard.website}}</p>
-             <p>{{teamInCard.email}}</p>
-             <p>{{teamInCard.address}}</p>
+            <p>Phone: {{teamInCard.phone}}</p>
+            <p>Email: {{teamInCard.email}}</p>
+            <a v-bind:href="teamInCard.website">{{teamInCard.website}}</a>
         </div>
 
-        
+
     </div>
 </template>
 <script>
-export default {
-    name: 'teamCard',
-    props:['teamInCard'],
-    computed:{
-        getCrest(){
-
+    export default {
+        name: 'teamCard',
+        props: ['teamInCard', 'extraInfo', 'cQTeams'],
+        computed: {
+            getCrest() {
+                var arr = this.cQTeams.filter(team => team.id == this.teamInCard.id)
+                if (arr[0].crestUrl == null) {
+                    var b = this.extraInfo.filter(team => team.id == this.teamInCard.id)
+                    return b[0].crestUrl
+                }
+                return arr[0].crestUrl
+            }
         }
     }
-}
 </script>
 
 <style scoped>
-.team-box{
- background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%);
- width: 95%;
- height: 260px;
- margin: auto;
- margin-bottom: 10px;
- padding-top: 15px;
-}
-.header {
-    display: flex;
-    justify-content: space-around
-}
+    .team-box {
+        background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
+        width: 95%;
+        height: 260px;
+        margin: auto;
+        margin-bottom: 10px;
+        padding-top: 15px;
+        border-radius: 10px;
+    }
 
-img {
-    height: 50px;
-    width: 50px;
-}
-.club-info {
-    display: flex;
-    justify-content: space-around
-}
-p {
-    margin-bottom: 5px;
-}
-.contact {
-    color: white;
-    display: inline;;
-}
+    .header {
+        display: flex;
+        justify-content: flex-start
+    }
+
+    img {
+        height: 50px;
+        width: 50px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 10px;
+    }
+
+    .club-info {
+        display: flex;
+        justify-content: space-around
+    }
+
+    p {
+        margin-bottom: 5px;
+    }
+
+    .contact {
+        color: white;
+        display: inline;
+
+    }
 </style>
-
