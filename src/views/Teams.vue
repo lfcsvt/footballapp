@@ -16,14 +16,13 @@
             return {
                 allTeams: this.$route.params.allTeams,
                 nextMatches: this.$route.params.nextMatches,
-                extraInfo: this.$parent.extraInfo,
+                extraInfo: this.$route.params.extraInfo,
                 qTeams: []
             }
         },
         methods: {
             getQTeams() {
                 this.nextMatches.forEach(match => {
-                    // this.qteam.push(match.awayTeam, match.homeTeam )
                     var a = this.allTeams.filter(team => team.id == match.awayTeam.id)
                     var b = this.allTeams.filter(team => team.id == match.homeTeam.id)
                     this.qTeams.push(a[0], b[0])
@@ -34,8 +33,6 @@
         },
         created() {
             this.getQTeams()
-            // console.log(this.qteams)
-            // console.log(this.nextMatches)
         },
         computed: {
             dataAreIn() {

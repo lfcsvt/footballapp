@@ -1,7 +1,7 @@
 <template>
     <div class="team-box">
         <div class="header">
-            <img :src=getCrest alt="">
+            <img :src=getTeamCrest alt="">
             <h5>{{teamInCard.name}}</h5>
         </div>
         <div class="club-info">
@@ -14,8 +14,6 @@
             <p>Email: {{teamInCard.email}}</p>
             <a v-bind:href="teamInCard.website">{{teamInCard.website}}</a>
         </div>
-
-
     </div>
 </template>
 <script>
@@ -23,13 +21,9 @@
         name: 'teamCard',
         props: ['teamInCard', 'extraInfo', 'cQTeams'],
         computed: {
-            getCrest() {
-                var arr = this.cQTeams.filter(team => team.id == this.teamInCard.id)
-                if (arr[0].crestUrl == null) {
-                    var b = this.extraInfo.filter(team => team.id == this.teamInCard.id)
-                    return b[0].crestUrl
-                }
-                return arr[0].crestUrl
+            getTeamCrest(){
+              var a =  this.extraInfo.filter(team => team.id == this.teamInCard.id )
+              return a[0].crest
             }
         }
     }
@@ -74,6 +68,7 @@
 
     }
     h5 {
-        align-items: center
+        align-items: center;
+        color: white
     }
 </style>

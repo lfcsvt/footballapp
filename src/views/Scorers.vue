@@ -1,7 +1,7 @@
 <template>
     <div class="scorers">
         <div class="top-scorers">
-            <img src="../assets/10.jpg" alt="">
+            <!-- <img src="../assets/10.jpg" alt=""> -->
             <table>
                 <thead>
                     <th>Player</th>
@@ -11,7 +11,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="info in scorers">
-                        <td><img :src='getPic' alt=""></td>
+                        <td><img :src= getPic alt=""></td>
                         <td>{{info.player.name}}</td>
                         <td>{{info.player.nationality}}</td>
                         <td>{{info.numberOfGoals}}</td>
@@ -42,20 +42,21 @@
               var pic = ''
                 this.scorers.forEach((player, i) => {
                    var index =  i + 1
-                   pic = '../assets/' + index + '.jpg';  
+                   pic = '../assets/' + index + '.jpg'; 
                 })
-                 return pic 
+              return pic 
             }
         }
     }
 </script>
-<style>
-    table,
+<style scoped>
+ table,
     tr,
     th,
     td {
         color: white;
-        align-content: center
+       
+       
     }
 
     .scorers {
@@ -98,6 +99,7 @@
         td {
             color: white;
             align-content: center;
+            text-align: center;
         }
 
         .scorers {

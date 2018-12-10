@@ -6,10 +6,11 @@
     <!-- <div v-else> -->
     <div id="nav">
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
-      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraInfor: this.extraInfo, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>|
+      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>|
       <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraInfo}}">Standings</router-link> |
       <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link> |
-      <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.upcomingMatches }}">Teams</router-link>
+      <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.upcomingMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link> |
+      <router-link :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo }}">History</router-link>
     </div>
     <!-- </div> -->
     <router-view/>
@@ -68,7 +69,8 @@ crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
             'https://api.football-data.org/v2/competitions/CL/standings',
             'https://api.football-data.org/v2/competitions/CL/',
             'https://api.football-data.org/v2/competitions/CL/scorers/',
-            'https://api.jsonbin.io/b/5c0e4d1633da576e58f7ab3c'
+            'https://api.jsonbin.io/b/5c0e4d1633da576e58f7ab3c',
+            'https://api.jsonbin.io/b/5c0e75f733da576e58f7c0ee'
            ]
     let responseArray = urls.map((url) => {
         let request = new Request(url, {
@@ -90,7 +92,8 @@ crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
         this.scorers = allResults[5].scorers
         this.allMatches = allResults[1].matches
         this.extraTeamInfo = allResults[6]
-        console.log(this.extraTeamInfo)
+        this.history = allResults[7]
+        console.log(this.history)
     })
 },
   getQualified(){

@@ -139,7 +139,9 @@
             }
         },
         computed: {
-
+                getCrest(){
+                    
+                }
         },
         mounted() {
             
@@ -187,6 +189,7 @@
         border: 1px solid white;
         margin-left: 10px;
         align-content: flex-start;
+        text-align: left;
        
 
 
@@ -197,8 +200,12 @@
     td {
         color: white;
         border: 1px solid white;
-        text-align: initial
+        text-align: left;
+        align-content: flex-start
     }
+    image {
+    align-content: flex-start
+}
 
     @media only screen and (orientation: landscape) {
         body {

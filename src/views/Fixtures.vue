@@ -22,18 +22,9 @@
       }
     },
     created() {
-
       this.getQTeams()
-      console.log(this.extraInfo)
-      // console.log(this.allTeams) 
     },
     methods: {
-      //       getQualified(){
-      //     this.matches.forEach(match => {
-      //         this.qualified.push(match.awayTeam, match.homeTeam)
-      //     })
-      //      return this.qualified
-      // },
       getQTeams() {
         this.qualified.forEach(qTeam => {
           return qTeam
@@ -44,8 +35,6 @@
       getTeamInfo() {
         this.qTeams.forEach(team => {
           return team
-
-
         })
       }
     }
