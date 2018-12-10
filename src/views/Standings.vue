@@ -3,67 +3,67 @@
         <div class="standings-box">
             <div class="group-box" v-if="!horizontal">
                 <h5>Group A</h5>
-                <Table v-bind:group="groups[0]" />
+                <Table v-bind:group="groups[0]"  :moreInfo="moreInfo"/>
             </div>
             <div class="group-box" v-else >
                 <h5>Group A</h5>
-                <Table2 v-bind:group="groups[0]"/>
+                <Table2 v-bind:group="groups[0]" :moreInfo="moreInfo"/>
              </div>
                  <div class="group-box" v-if="!horizontal">
                 <h5>Group B</h5>
-                <Table v-bind:group="groups[1]" />
+                <Table v-bind:group="groups[1]" :moreInfo="moreInfo"/>
             </div>
             <div class="group-box" v-else >
                 <h5>Group B</h5>
-                <Table2 v-bind:group="groups[1]"/>
+                <Table2 v-bind:group="groups[1]" :moreInfo="moreInfo"/>
              </div>
                  <div class="group-box" v-if="!horizontal">
                 <h5>Group C</h5>
-                <Table v-bind:group="groups[2]" />
+                <Table v-bind:group="groups[2]" :moreInfo="moreInfo"/>
             </div>
             <div class="group-box" v-else >
                 <h5>Group C</h5>
-                <Table2 v-bind:group="groups[2]"/>
+                <Table2 v-bind:group="groups[2]" :moreInfo="moreInfo"/>
              </div>
                 <div class="group-box" v-if="!horizontal">
                 <h5>Group D</h5>
-                <Table v-bind:group="groups[3]" />
+                <Table v-bind:group="groups[3]" :moreInfo="moreInfo"/>
             </div>
             <div class="group-box" v-else >
                 <h5>Group D</h5>
-                <Table2 v-bind:group="groups[3]"/>
+                <Table2 v-bind:group="groups[3]" :moreInfo="moreInfo"/>
              </div>
                 <div class="group-box" v-if="!horizontal">
                 <h5>Group E</h5>
-                <Table v-bind:group="groups[4]" />
+                <Table v-bind:group="groups[4]" :moreInfo="moreInfo"/>
             </div>
             <div class="group-box" v-else >
                 <h5>Group E</h5>
-                <Table2 v-bind:group="groups[4]"/>
+                <Table2 v-bind:group="groups[4]" :moreInfo="moreInfo"/>
              </div>
                 <div class="group-box" v-if="!horizontal">
                 <h5>Group F</h5>
-                <Table v-bind:group="groups[5]" />
+                <Table v-bind:group="groups[5]" :moreInfo="moreInfo"/>
             </div>
             <div class="group-box" v-else >
                 <h5>Group F</h5>
-                <Table2 v-bind:group="groups[5]"/>
+                <Table2 v-bind:group="groups[5]" :moreInfo="moreInfo"/>
              </div>
                <div class="group-box" v-if="!horizontal">
                 <h5>Group G</h5>
-                <Table v-bind:group="groups[6]" />
+                <Table v-bind:group="groups[6]" :moreInfo="moreInfo"/>
             </div>
             <div class="group-box" v-else >
                 <h5>Group G</h5>
-                <Table2 v-bind:group="groups[6]"/>
+                <Table2 v-bind:group="groups[6]" :moreInfo="moreInfo"/>
              </div>
                <div class="group-box" v-if="!horizontal">
                 <h5>Group H</h5>
-                <Table v-bind:group="groups[7]" />
+                <Table v-bind:group="groups[7]" :moreInfo="moreInfo"/>
             </div>
             <div class="group-box" v-else >
                 <h5>Group H</h5>
-                <Table2 v-bind:group="groups[7]"/>
+                <Table2 v-bind:group="groups[7]" :moreInfo="moreInfo"/>
              </div>
         </div>
     </div>
@@ -84,12 +84,14 @@
                 horizontal: this.onResize(),
                 standings1: [],
                 groups: [],
-                extraInfo: this.$route.params.extraInfo
+                extraInfo: this.$route.params.extraInfo,
+                moreInfo: this.$parent.extraTeamInfo
             }
         },
         created() {
             this.getGroups()
-            this.addCrest()
+            // this.addCrest()
+        
         },
         methods: {
             getGroups() {
@@ -139,9 +141,7 @@
             }
         },
         computed: {
-                getCrest(){
-                    
-                }
+        
         },
         mounted() {
             

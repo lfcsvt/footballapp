@@ -10,8 +10,8 @@
                     <th>Goals</th>
                 </thead>
                 <tbody>
-                    <tr v-for="info in scorers">
-                        <td><img :src= getPic alt=""></td>
+                    <tr v-for="(info, index) in scorers" :key="index">
+                        <td><img :src="require(`../assets/${index+1}.jpg`)" alt=""></td>
                         <td>{{info.player.name}}</td>
                         <td>{{info.player.nationality}}</td>
                         <td>{{info.numberOfGoals}}</td>
@@ -38,14 +38,7 @@
         methods: {
         },
         computed: {
-            getPic() {
-              var pic = ''
-                this.scorers.forEach((player, i) => {
-                   var index =  i + 1
-                   pic = '../assets/' + index + '.jpg'; 
-                })
-              return pic 
-            }
+       
         }
     }
 </script>
@@ -75,8 +68,8 @@
         border-radius: 10px;
     }
     img {
-        height: 25px;
-        width: 25px;
+        height: 45px;
+        width: 45px;
     }
 
     @media only screen and (orientation: landscape) {
@@ -91,6 +84,7 @@
             margin-bottom: 20px;
             margin-top: 20px;
             border-radius: 10px;
+            overflow: auto;
         }
 
         table,
