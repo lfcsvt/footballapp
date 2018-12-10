@@ -6,8 +6,8 @@
     <!-- <div v-else> -->
     <div id="nav">
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
-      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraInfor: this.extraInfo}}">Fixtures</router-link>|
-      <router-link :to="{ name: 'standings', params: { results: this.standings }}">Standings</router-link> |
+      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraInfor: this.extraInfo, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>|
+      <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraInfo}}">Standings</router-link> |
       <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link> |
       <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.upcomingMatches }}">Teams</router-link>
     </div>
@@ -25,18 +25,20 @@ export default {
       scorers: [],
       qualified: [],
       allMatches: [],
+      champions: [],
+      extraTeamInfo: [],
       extraInfo: [
                 {
 id: 851,
 name: 'Club Brugge KV',
-crestUrl: "https://s.glbimg.com/es/sde/f/original/2011/08/11/Brugge65.png" },
+crestUrl: "https://img.uefa.com/imgml/TP/teams/logos/70x70/50043.png" },
 
 {id: 7283,
 name: 'FK Crvena Zvezda',
 crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/Estrela_Vermelha65.png"},
 {id: 1899,
 name: 'PAE AEK',
-crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2017/10/14/AEKAtenas_65.png"},
+crestUrl: 'https://img.uefa.com/imgml/TP/teams/logos/70x70/50129.png'},
 {id: 1871,
 name: 'BSC Young Boys',
 crestUrl:"https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/youngboys65.png" },
@@ -65,7 +67,8 @@ crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
             'https://api.football-data.org/v2/competitions/CL/matches/?status=SCHEDULED',
             'https://api.football-data.org/v2/competitions/CL/standings',
             'https://api.football-data.org/v2/competitions/CL/',
-            'https://api.football-data.org/v2/competitions/CL/scorers/'
+            'https://api.football-data.org/v2/competitions/CL/scorers/',
+            'https://api.jsonbin.io/b/5c0e4d1633da576e58f7ab3c'
            ]
     let responseArray = urls.map((url) => {
         let request = new Request(url, {
@@ -86,14 +89,8 @@ crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
        this.standings = allResults[3].standings
         this.scorers = allResults[5].scorers
         this.allMatches = allResults[1].matches
-        // this.isLoading = false
-        // var UCL = allResults[4].seasons
-        // var matches = allResults[1].matches
-        // console.log(this.teams)
-        // console.log(this.upcomingMatches)
-        // console.log(this.standings)
-        // console.log(this.scorers)
-        console.log(this.allMatches)
+        this.extraTeamInfo = allResults[6]
+        console.log(this.extraTeamInfo)
     })
 },
   getQualified(){
@@ -102,20 +99,25 @@ crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
         this.qualified.push(match.awayTeam, match.homeTeam)
     })
      return this.qualified
-},
- filterMatches(){
-      // var a = this.allMatches.filter(match => match.matchDay > 4)
-      this.allMatches.forEach(match=> {
-        console.log(match.matchDay)
-      })
-      // console.log(a)
-    }
+}
+//  getChampions(){
+//     const http = new XMLHttpRequest()
+
+// http.open("GET", "https://api.myjson.com/bins/1hdmyu")
+// http.send()
+
+// // http.onload = () => console.log(http.response)
+
+// http.onload = () => http.responseText 
+
+// console.log(this.champions)
+// // return this.champions
+//     }
   },
   created(){ 
     this.getQualified() 
     this.getData()
-    this.filterMatches()
-    console.log(this.allMatches)
+    // this.getChampions()
   },
   computed:{
     // datAreIn(){

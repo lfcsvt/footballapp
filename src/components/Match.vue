@@ -6,7 +6,7 @@
               <img :src=getHTeamLogo alt="">
             <!-- <p>{{matchFromFix.homeTeam.tla}}</p> -->
             <!-- <p>{{getHomeVenue}}</p> -->
-            <p>X</p>
+            <p>{{getHour}}</p>
             <img :src=getATeamLogo alt="">
             <!-- <p>{{matchFromFix.awayTeam.name}}</p> -->
           </div>
@@ -29,7 +29,7 @@ export default {
                   if(arr[0].crestUrl == null){
              var b = this.extraInfo.filter(team => team.id == this.matchFromFix.homeTeam.id
             )
-        return b[0].crestUrl
+        return b[0].crest
           }
           return arr[0].crestUrl
       },
@@ -38,16 +38,26 @@ export default {
           if(arr[0].crestUrl == null){
              var b = this.extraInfo.filter(team => team.id == this.matchFromFix.awayTeam.id
             )
-        return b[0].crestUrl
+        return b[0].crest
           }
           return arr[0].crestUrl
       },
       getTime(){
         var date = this.matchFromFix.utcDate
        var myDate = new Date( date);
-       return myDate.toGMTString()
+        var a = myDate.toGMTString()
+          a = a.split(' ')
+       return a[0] + a[1] + ' ' + a[2] + ' ' + a[3]
       //  return myDate.toLocaleString()
            
+      },
+      getHour(){
+            var date = this.matchFromFix.utcDate
+       var myDate = new Date( date);
+        var a = myDate.toLocaleString()
+          a = a.split(' ')
+          var b = a[1].split('') 
+       return b[0]+b[1]+b[2]+b[3]+b[4]
       }
 
   }

@@ -6,6 +6,9 @@
             <th>W</th>
             <th>D</th>
             <th>L</th>
+            <th>GF</th>
+            <th>GA</th>
+            <th>GD</th>
             <th>P</th>
         </thead>
     <tbody>
@@ -16,6 +19,9 @@
         <td>{{team.won}}</td>
         <td>{{team.draw}}</td>
         <td>{{team.lost}}</td>
+        <td>{{team.goalsFor}}</td>
+        <td>{{team.goalsAgainst}}</td>
+        <td>{{team.goalDifference}}</td>
         <td>{{team.points}}</td>
      </tr>
     </tbody>
@@ -23,7 +29,7 @@
 </template>
 <script>
 export default {
-      name: "Table",
+      name: "Table2",
     props: ["group"],
     created(){
         
@@ -35,5 +41,3 @@ image {
     align-content: flex-start
 }
 </style>
-
-

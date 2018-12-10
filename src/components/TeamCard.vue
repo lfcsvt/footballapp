@@ -2,7 +2,7 @@
     <div class="team-box">
         <div class="header">
             <img :src=getCrest alt="">
-            <p>{{teamInCard.name}}</p>
+            <h5>{{teamInCard.name}}</h5>
         </div>
         <div class="club-info">
             <p>Country: {{teamInCard.area.name}}</p>
@@ -72,5 +72,8 @@
         color: white;
         display: inline;
 
+    }
+    h5 {
+        align-items: center
     }
 </style>

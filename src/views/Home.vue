@@ -8,15 +8,13 @@
 </template>
 
 <script>
-  // @ is an alias to /src
   import Header from '@/components/Header.vue'
   import VPlayer from '@/components/VPlayer.vue'
 
   export default {
     name: 'home',
     components: {
-      Header,
-      VPlayer
+      Header
     },
     data() {
       return {
@@ -54,5 +52,13 @@
   img {
     height: 25px;
     width: 25px;
+  }
+
+  @media only screen and (orientation: landscape) {
+    body {
+      background-image: url(../assets/ucl3.jpg);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 </style>

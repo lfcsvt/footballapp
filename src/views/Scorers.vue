@@ -1,6 +1,7 @@
 <template>
     <div class="scorers">
         <div class="top-scorers">
+            <img src="../assets/10.jpg" alt="">
             <table>
                 <thead>
                     <th>Player</th>
@@ -9,8 +10,8 @@
                     <th>Goals</th>
                 </thead>
                 <tbody>
-                        <tr v-for="info in scorers">
-                        <td><img src="" alt=""></td>
+                    <tr v-for="info in scorers">
+                        <td><img :src='getPic' alt=""></td>
                         <td>{{info.player.name}}</td>
                         <td>{{info.player.nationality}}</td>
                         <td>{{info.numberOfGoals}}</td>
@@ -26,22 +27,24 @@
         data() {
             return {
                 scorers: this.$route.params.scorers,
-                matches: []
+                matches: [],
+                pictures: []
             }
         },
         created() {
-            console.log(this.scorers)
+            // console.log(this.scorers)
 
         },
         methods: {
-            getScorers() {
-
-                // this.scorers.forEach( match => {
-                //     if(match.matchday > 4 && match.status == "FINISHID"){
-                //         this.matches.push(match)
-                //     }
-                // });
-                //  return this.matches
+        },
+        computed: {
+            getPic() {
+              var pic = ''
+                this.scorers.forEach((player, i) => {
+                   var index =  i + 1
+                   pic = '../assets/' + index + '.jpg';  
+                })
+                 return pic 
             }
         }
     }
@@ -54,18 +57,53 @@
         color: white;
         align-content: center
     }
-.scorers{
-    display: flex;
-    margin: auto;
-  
-}
-.top-scorers {
-    height: 505px !important;
-    width: 330px !important;
-    padding-top: 10px;
-    background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
-    margin: auto;
-    margin-bottom: 10px;
-    border-radius: 10px;
+
+    .scorers {
+        display: flex;
+        margin: auto;
+
+    }
+
+    .top-scorers {
+        height: 505px !important;
+        width: 340px !important;
+        padding-top: 10px;
+        background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
+        margin: auto;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+    img {
+        height: 25px;
+        width: 25px;
+    }
+
+    @media only screen and (orientation: landscape) {
+
+        .top-scorers {
+            height: 320px !important;
+            width: 600px !important;
+            padding-top: 10px;
+            padding-left: 5px;
+            background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
+            margin: auto;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            color: white;
+            align-content: center;
+        }
+
+        .scorers {
+            display: flex;
+            margin: auto;
+
+        }
     }
 </style>

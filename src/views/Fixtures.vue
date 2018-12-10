@@ -2,7 +2,7 @@
   <div class="fixtures">
     <div class="matches">
       <div class="matchBox" v-for="(match, index) in matches" :key='index'>
-        <Match :matchFromFix="match" :allTeams="allTeams" :extraInfo="extraInfo" />
+        <Match :matchFromFix="match" :allTeams="allTeams" :extraInfo="extraInfo"  />
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
       return {
         matches: this.$route.params.matches,
         allTeams: this.$parent.teams,
-        extraInfo: this.$parent.extraInfo
+        extraInfo: this.$parent.extraTeamInfo
       }
     },
     created() {
