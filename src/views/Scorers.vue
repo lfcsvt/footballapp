@@ -1,19 +1,18 @@
 <template>
     <div class="scorers">
         <div class="top-scorers">
-            <!-- <img src="../assets/10.jpg" alt=""> -->
             <table>
                 <thead>
                     <th>Player</th>
                     <th>Name</th>
-                    <th>Country</th>
+                    <th>Club</th>
                     <th>Goals</th>
                 </thead>
                 <tbody>
                     <tr v-for="(info, index) in scorers" :key="index">
                         <td><img :src="require(`../assets/${index+1}.jpg`)" alt=""></td>
                         <td>{{info.player.name}}</td>
-                        <td>{{info.player.nationality}}</td>
+                        <td>{{info.team.name}}</td>
                         <td>{{info.numberOfGoals}}</td>
                     </tr>
                 </tbody>
@@ -32,13 +31,12 @@
             }
         },
         created() {
-            // console.log(this.scorers)
+            console.log(this.scorers)
 
         },
         methods: {
         },
         computed: {
-       
         }
     }
 </script>
@@ -47,9 +45,7 @@
     tr,
     th,
     td {
-        color: white;
-       
-       
+        color: white;   
     }
 
     .scorers {
@@ -59,7 +55,7 @@
     }
 
     .top-scorers {
-        height: 505px !important;
+        height: 555px !important;
         width: 340px !important;
         padding-top: 10px;
         background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);

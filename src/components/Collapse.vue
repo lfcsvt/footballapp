@@ -24,6 +24,10 @@ export default {
     },
     created(){
         // console.log(this.match.homeTeam.id)
+        this.collapse
+    },
+    methods:{
+
     }
 }
 </script>

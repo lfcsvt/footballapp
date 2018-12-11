@@ -8,7 +8,7 @@
     </div>
     <p>{{getTime}}</p>
     <p>Venue: {{getHomeVenue}}</p>
-    <a v-b-toggle="'collapse2'" class="map-button" title="Details"><p class="button-name">Directions</p><Collapse :match="matchFromFix" :extraInfo="extraInfo"/></a>
+    <b-button variant="outline-primary" v-b-toggle="'collapse2'" class="map-button" style="padding-top: 0px;">Directions<Collapse :match="matchFromFix" :extraInfo="extraInfo"/></b-button>
   </div>
 </template>
 <script>
@@ -73,19 +73,10 @@ import Collapse from "@/components/Collapse.vue";
    .map-button{
    width: 320px !important;
    height: 22px;
-   color: white !important;
  }
  .button-name{
    margin-bottom: 0px;
  }
- .btn-secondary{
-   color: transparent !important;
- }
- .btn{
-   padding-top: 0px;
-   color: transparent !important;
- }
- a {
-   color: darkblue;
- }
+
+
 </style>
