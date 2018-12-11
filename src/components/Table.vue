@@ -10,10 +10,10 @@
         </thead>
     <tbody>
         <tr v-for="team in group">
-        <!-- <td v-if="team.team.crestUrl != null" style="align: left"><img :src=team.team.crestUrl alt="">   {{team.team.name}}</td>
-        <td v-else>{{team.team.name}}</td> -->
+        <td v-if="team.team.crestUrl != null" style="align: left"><img :src=team.team.crestUrl alt="">   {{team.team.name}}</td>
+        <td v-else>{{team.team.name}}</td>
         <!-- <td><img :src="require(`${getCrest}`)" alt=""> {{team.team.name}}</td> -->
-        <td><img :src=getCrest alt=""> {{team.team.name}}</td>
+        <!-- <td><img :src=getCrest alt=""> {{team.team.name}}</td> -->
         <td>{{team.playedGames}}</td>
         <td>{{team.won}}</td>
         <td>{{team.draw}}</td>

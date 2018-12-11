@@ -4,9 +4,14 @@
 <script>
 export default {
     name: 'map',
-    props:[],
+    props:['extraInfo'],
     data(){
         return {
+            
+        }
+    },
+    methods:{
+        getGameLocation(){
             
         }
     }

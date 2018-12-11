@@ -1,159 +1,165 @@
 <template>
   <div id="app">
-      <!-- <div v-if="!dataAreIn">
+    <!-- <div v-if="!dataAreIn">
       <p>loading......</p>
     </div> -->
     <!-- <div v-else> -->
     <div id="nav">
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
       <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>|
-      <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraInfo}}">Standings</router-link> |
+      <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraInfo}}">Standings</router-link>
+      |
       <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link> |
-      <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.upcomingMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link> |
+      <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.upcomingMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link>
+      |
       <router-link :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo }}">History</router-link>
     </div>
     <!-- </div> -->
-    <router-view/>
+    <router-view />
   </div>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      teams: [],
-      standings: [],
-      upcomingMatches: [],
-      scorers: [],
-      qualified: [],
-      allMatches: [],
-      champions: [],
-      extraTeamInfo: [],
-      extraInfo: [
-                {
-id: 851,
-name: 'Club Brugge KV',
-crestUrl: "https://img.uefa.com/imgml/TP/teams/logos/70x70/50043.png" },
+  export default {
+    data() {
+      return {
+        teams: [],
+        standings: [],
+        upcomingMatches: [],
+        scorers: [],
+        qualified: [],
+        allMatches: [],
+        champions: [],
+        extraTeamInfo: [],
+        history: [],
+        extraInfo: [{
+            id: 851,
+            name: 'Club Brugge KV',
+            crestUrl: "https://img.uefa.com/imgml/TP/teams/logos/70x70/50043.png"
+          },
 
-{id: 7283,
-name: 'FK Crvena Zvezda',
-crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/Estrela_Vermelha65.png"},
-{id: 1899,
-name: 'PAE AEK',
-crestUrl: 'https://img.uefa.com/imgml/TP/teams/logos/70x70/50129.png'},
-{id: 1871,
-name: 'BSC Young Boys',
-crestUrl:"https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/youngboys65.png" },
-{id: 1887,
-name: 'FK Shakhtar Donetsk',
-crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/12/shakhtar-donetsk.svg"},
-{id: 1881,
-name: 'FC Viktoria Plzeň',
-crestUrl: "https://s.glbimg.com/es/sde/f/original/2011/08/24/Viktoria_65x65.png"},
-{id: 1900,
-name: 'PFC CSKA Moskva',
-crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2017/12/03/CSKA-65.png"},
-{id: 5455,
-name: 'FK Lokomotiv Moskva',
-crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/lokomotivmoscou65.png"},
-{id: 1903,
-name: 'Sport Lisboa e Benfica',
-crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"}
-            ]
-    }
-  },
-  methods: {
-     getData() {
-       var urls = ['https://api.football-data.org/v2/competitions/CL/teams',
-            'https://api.football-data.org/v2/competitions/CL/matches/',
-            'https://api.football-data.org/v2/competitions/CL/matches/?status=SCHEDULED',
-            'https://api.football-data.org/v2/competitions/CL/standings',
-            'https://api.football-data.org/v2/competitions/CL/',
-            'https://api.football-data.org/v2/competitions/CL/scorers/',
-            'https://api.jsonbin.io/b/5c0e4d1633da576e58f7ab3c',
-            'https://api.jsonbin.io/b/5c0e75f733da576e58f7c0ee'
-           ]
-    let responseArray = urls.map((url) => {
-        let request = new Request(url, {
+          {
+            id: 7283,
+            name: 'FK Crvena Zvezda',
+            crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/Estrela_Vermelha65.png"
+          },
+          {
+            id: 1899,
+            name: 'PAE AEK',
+            crestUrl: 'https://img.uefa.com/imgml/TP/teams/logos/70x70/50129.png'
+          },
+          {
+            id: 1871,
+            name: 'BSC Young Boys',
+            crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/youngboys65.png"
+          },
+          {
+            id: 1887,
+            name: 'FK Shakhtar Donetsk',
+            crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/12/shakhtar-donetsk.svg"
+          },
+          {
+            id: 1881,
+            name: 'FC Viktoria Plzeň',
+            crestUrl: "https://s.glbimg.com/es/sde/f/original/2011/08/24/Viktoria_65x65.png"
+          },
+          {
+            id: 1900,
+            name: 'PFC CSKA Moskva',
+            crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2017/12/03/CSKA-65.png"
+          },
+          {
+            id: 5455,
+            name: 'FK Lokomotiv Moskva',
+            crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/lokomotivmoscou65.png"
+          },
+          {
+            id: 1903,
+            name: 'Sport Lisboa e Benfica',
+            crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"
+          }
+        ]
+      }
+    },
+    methods: {
+      getData() {
+        var urls = ['https://api.football-data.org/v2/competitions/CL/teams',
+          'https://api.football-data.org/v2/competitions/CL/matches/',
+          'https://api.football-data.org/v2/competitions/CL/matches/?status=SCHEDULED',
+          'https://api.football-data.org/v2/competitions/CL/standings',
+          'https://api.football-data.org/v2/competitions/CL/',
+          'https://api.football-data.org/v2/competitions/CL/scorers/',
+          'https://api.jsonbin.io/b/5c0e4d1633da576e58f7ab3c',
+          'https://api.jsonbin.io/b/5c0e75f733da576e58f7c0ee'
+        ]
+        let responseArray = urls.map((url) => {
+          let request = new Request(url, {
             headers: new Headers({
-                'X-Auth-Token': 'e629d8e25d5140eea6726726830817e7'
+              'X-Auth-Token': 'e629d8e25d5140eea6726726830817e7'
             }),
             method: 'GET'
+          });
+
+          return fetch(request).then(response => response.json());
+
         });
 
-        return fetch(request).then(response => response.json());
-
-    });
-
-    Promise.all(responseArray).then(allResults => {
-        console.log(allResults)
-       this.teams = allResults[0].teams
-        this.upcomingMatches = allResults[2].matches
-       this.standings = allResults[3].standings
-        this.scorers = allResults[5].scorers
-        this.allMatches = allResults[1].matches
-        this.extraTeamInfo = allResults[6]
-        this.history = allResults[7]
-        console.log(this.history)
-    })
-},
-  getQualified(){
-    var teams1 = []
-    this.upcomingMatches.forEach(match => {
-        this.qualified.push(match.awayTeam, match.homeTeam)
-    })
-     return this.qualified
-}
-//  getChampions(){
-//     const http = new XMLHttpRequest()
-
-// http.open("GET", "https://api.myjson.com/bins/1hdmyu")
-// http.send()
-
-// // http.onload = () => console.log(http.response)
-
-// http.onload = () => http.responseText 
-
-// console.log(this.champions)
-// // return this.champions
-//     }
-  },
-  created(){ 
-    this.getQualified() 
-    this.getData()
-    // this.getChampions()
-  },
-  computed:{
-    // datAreIn(){
-    //   return [
-    //     this.teams.length > 0,
-    //     this. standings.length > 0,
-    //     this.upcomingMatches.length > 0,
-    //     this.scorers.length > 0
-    //   ]  
-    // }
-}
-}
+        Promise.all(responseArray).then(allResults => {
+          console.log(allResults)
+          this.teams = allResults[0].teams
+          this.upcomingMatches = allResults[2].matches
+          this.standings = allResults[3].standings
+          this.scorers = allResults[5].scorers
+          this.allMatches = allResults[1].matches
+          this.extraTeamInfo = allResults[6]
+          this.history = allResults[7]
+          // console.log(this.history)
+        })
+      },
+      getQualified() {
+        var teams1 = []
+        this.upcomingMatches.forEach(match => {
+          this.qualified.push(match.awayTeam, match.homeTeam)
+        })
+        return this.qualified
+      }
+    },
+    created() {
+      this.getQualified()
+      this.getData()
+    },
+    computed: {
+      // datAreIn(){
+      //   return [
+      //     this.teams.length > 0,
+      //     this. standings.length > 0,
+      //     this.upcomingMatches.length > 0,
+      //     this.scorers.length > 0
+      //   ]  
+      // }
+    }
+  }
 </script>
 
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  #nav {
+    padding: 30px;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  #nav a {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+
+  #nav a.router-link-exact-active {
+    color: #42b983;
+  }
 </style>

@@ -2,13 +2,13 @@
   <div class="fixtures">
     <div class="matches">
       <div class="matchBox" v-for="(match, index) in matches" :key='index'>
-        <Match :matchFromFix="match" :allTeams="allTeams" :extraInfo="extraInfo"  />
+        <Match :matchFromFix="match" :allTeams="allTeams" :extraInfo="extraInfo" />
       </div>
     </div>
   </div>
 </template>
 <script>
-  import Match from "@/components/Match";
+  import Match from "@/components/Match.vue";
   export default {
     name: 'fixtures',
     components: {
@@ -31,6 +31,7 @@
         })
       }
     },
+
     computed: {
       getTeamInfo() {
         this.qTeams.forEach(team => {

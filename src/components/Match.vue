@@ -8,12 +8,17 @@
     </div>
     <p>{{getTime}}</p>
     <p>Venue: {{getHomeVenue}}</p>
+    <a v-b-toggle="'collapse2'" class="map-button" title="Details"><p class="button-name">Directions</p><Collapse :match="matchFromFix" :extraInfo="extraInfo"/></a>
   </div>
 </template>
 <script>
+import Collapse from "@/components/Collapse.vue";
   export default {
     name: 'match',
     props: ["matchFromFix", "allTeams", "extraInfo"],
+    components:{
+      Collapse
+    },
     computed: {
       getHomeVenue() {
         var tempArr = this.allTeams.filter(team => team.id == this.matchFromFix.homeTeam.id);
@@ -42,7 +47,6 @@
         var b = this.extraInfo.filter(team => team.id == this.matchFromFix.homeTeam.id)
         return b[0].crest
       }
-
     },
     created() {
     }
@@ -63,4 +67,25 @@
   h5 {
     color: white;
   }
+  p {
+    margin-bottom: 10px;
+  }
+   .map-button{
+   width: 320px !important;
+   height: 22px;
+   color: white !important;
+ }
+ .button-name{
+   margin-bottom: 0px;
+ }
+ .btn-secondary{
+   color: transparent !important;
+ }
+ .btn{
+   padding-top: 0px;
+   color: transparent !important;
+ }
+ a {
+   color: darkblue;
+ }
 </style>
