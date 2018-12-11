@@ -8,15 +8,22 @@
     </div>
     <p>{{getTime}}</p>
     <p>Venue: {{getHomeVenue}}</p>
-    <b-button variant="outline-primary" v-b-toggle="'collapse2'" class="map-button" style="padding-top: 0px;">Directions<Collapse :match="matchFromFix" :extraInfo="extraInfo"/></b-button>
+    <b-button variant="outline-primary" v-b-toggle="`collapse2${matchFromFix.id}`" class="map-button" style="padding-top: 0px;">
+      Directions
+      <Collapse :match="matchFromFix" :extraInfo="extraInfo"/>
+    </b-button>
+     <!-- <b-button variant="outline-primary" v-b-toggle="`collapse2${index}`" class="map-button" style="padding-top: 0px;">
+      Directions
+      <Collapse :match="matchFromFix" :extraInfo="extraInfo" />
+    </b-button> -->
   </div>
 </template>
 <script>
-import Collapse from "@/components/Collapse.vue";
+  import Collapse from "@/components/Collapse.vue";
   export default {
     name: 'match',
     props: ["matchFromFix", "allTeams", "extraInfo"],
-    components:{
+    components: {
       Collapse
     },
     computed: {
@@ -48,8 +55,7 @@ import Collapse from "@/components/Collapse.vue";
         return b[0].crest
       }
     },
-    created() {
-    }
+    created() {}
   }
 </script>
 <style scoped>
@@ -67,16 +73,17 @@ import Collapse from "@/components/Collapse.vue";
   h5 {
     color: white;
   }
+
   p {
     margin-bottom: 10px;
   }
-   .map-button{
-   width: 320px !important;
-   height: 22px;
- }
- .button-name{
-   margin-bottom: 0px;
- }
 
+  .map-button {
+    width: 320px !important;
+    height: 22px;
+  }
 
+  .button-name {
+    margin-bottom: 0px;
+  }
 </style>

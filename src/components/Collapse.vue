@@ -1,6 +1,6 @@
 <template>
     <div>
-  <b-collapse id="collapse2">
+  <b-collapse :id=" `collapse2${match.id}`">
     <b-card>
       <iframe :src=getMap  width="250" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
     </b-card>

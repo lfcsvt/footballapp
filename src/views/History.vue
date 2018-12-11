@@ -1,55 +1,44 @@
 <template>
     <div class="history">
-        <div class="historic-game"  v-for="(match, index) in history" :key="index">
-            <CardHist :matchInCard="match"/>
+        <div class="historic-game" v-for="(match, index) in history" :key="index">
+            <CardHist :matchInCard="match" />
         </div>
-        <!-- <table>
-            <thead> 
-                <th>Year</th>
-                <th>Winner</th>
-                <th>Winner Nation</th>
-                <th>score</th>
-                <th>Runner Up</th>
-                <th>Runner Up Nation</th> 
-                <th>Season</th>
-                <th>Venue</th>
-                <th>Attendance</th>
-            </thead>
-            <tbody>
-                <tr v-for="(item, index) in history" :key="index">
-                    <td>{{item.year}}</td>
-                    <td>{{item.winners}}</td>
-                    <td>{{item.nation1}}</td>
-                    <td>{{item.score}}</td>
-                    <td>{{item.runnersUp}}</td>
-                    <td>{{item.nation2}}</td>
-                    <td>{{item.season}}</td>
-                    <td>{{item.venue}}</td>
-                    <td>{{item.attendance}}</td>
-                </tr>
-            </tbody>
-        </table> -->
     </div>
 </template>
 <script>
-import CardHist from '@/components/CardHist.vue'
-export default {
-    name: 'history',
-    components:{
-        CardHist
-    },
-    data(){
-        return {
-            history: this.$route.params.history,
+    import CardHist from '@/components/CardHist.vue'
+    export default {
+        name: 'history',
+        components: {
+            CardHist
+        },
+        data() {
+            return {
+                history: this.$route.params.history,
+            }
+        },
+        created() {
+            this.mostChampions()
+        },
+        methods: {
+            mostChampions() {
+                var arr = []
+                var champs = []
+                this.history.forEach(item => {
+                    arr.push(item.winners)
+                })
+                var map = arr.reduce(function (obj, b) {
+                    obj[b] = ++obj[b] || 1;
+                    champs = obj
+                    return champs;
+                }, {});
+                console.log(champs)
+            }
         }
-    },
-    created(){
-
     }
-}
 </script>
 <style scoped>
- .history {
+    .history {
         background-size: contain;
         overflow: auto;
         height: 750px;
@@ -57,9 +46,7 @@ export default {
         margin-top: 5px;
     }
 
-.historic-match {
-
-    }
+    .historic-game {}
 
     h1,
     h2,
@@ -70,5 +57,3 @@ export default {
         color: white;
     }
 </style>
-
-

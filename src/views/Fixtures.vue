@@ -9,10 +9,12 @@
 </template>
 <script>
   import Match from "@/components/Match.vue";
+  import Collapse from "@/components/Collapse.vue";
   export default {
     name: 'fixtures',
     components: {
-      Match
+      Match,
+      Collapse
     },
     data() {
       return {
