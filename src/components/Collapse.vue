@@ -2,7 +2,7 @@
     <div>
   <b-collapse :id=" `collapse2${match.id}`">
     <b-card>
-      <iframe :src=getMap  width="250" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <iframe :src=getMap  width="280" height="160" frameborder="0" style="border:0" allowfullscreen></iframe>
     </b-card>
   </b-collapse>
 </div>
@@ -34,6 +34,10 @@ export default {
 <style scoped>
 #collapse2{
     widows: 320px;
+}
+.card-body{
+    width: 300px;
+    padding: 5px;
 }
 </style>
 
