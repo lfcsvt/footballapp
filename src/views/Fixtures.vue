@@ -1,5 +1,5 @@
 <template>
-  <div class="fixtures">
+  <div class="fixtures" style="-webkit-overflow-scrolling: touch;">
     <div class="matches">
       <div class="matchBox" v-for="(match, index) in matches" :key='index'>
         <Match :matchFromFix="match" :allTeams="allTeams" :extraInfo="extraInfo" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" style="-webkit-overflow-scrolling: touch;">
     <Header msg="Meet the Best" />
     <Header msg2="Experience greatness" />
     <div class="teams">

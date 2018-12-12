@@ -32,7 +32,7 @@
       <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraInfo}}">Standings</router-link>
       |
       <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link> |
-      <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.upcomingMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link>
+      <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link>
       |
       <router-link :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo }}">History</router-link>
     </div>
@@ -134,7 +134,7 @@
           this.allMatches = allResults[1].matches
           this.extraTeamInfo = allResults[6]
           this.history = allResults[7]
-          // console.log(this.history)
+          console.log(this.allMatches)
         })
       },
       getQualified() {

@@ -6,7 +6,7 @@
                <p>{{matchInCard.score}}</p>
                <p>{{matchInCard.runnersUp}}</p>
           </div>
-           <div class="extra-info-header">
+           <!-- <div class="extra-info-header">
               <p>Nation</p>
               <p>Season</p>
               <p>Nation</p>
@@ -15,7 +15,7 @@
               <p>{{matchInCard.nation1}}</p>
               <p>{{matchInCard.season}}</p>
               <p>{{matchInCard.nation2}}</p>
-          </div>
+          </div> -->
           <div class="venue-info">
                <p>Venue: {{matchInCard.venue}}</p>
           </div>
@@ -33,10 +33,9 @@ export default {
 <style scoped>
     .game {
         background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
-        width: 95%;
-        height: 260px;
-        margin: auto;
-        margin-bottom: 10px;
+        width: 250px;
+        height: 200px;
+        margin: 10px;
         padding-top: 15px;
         border-radius: 10px;
     }

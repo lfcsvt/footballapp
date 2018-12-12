@@ -1,5 +1,5 @@
 <template>
-    <div class="standings">
+    <div class="standings" style="-webkit-overflow-scrolling: touch;">
         <div class="standings-box">
             <div class="group-box" v-if="!horizontal">
                 <h5>Group A</h5>

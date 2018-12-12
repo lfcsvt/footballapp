@@ -1,6 +1,6 @@
 <template>
-    <div class="teams">
-        <div class="team" v-for="team in qTeams">
+    <div class="teams" style="-webkit-overflow-scrolling: touch;">
+        <div class="team" v-for="(team, index) in qTeams" :key="index">
             <TeamCard v-bind:teamInCard="team" :extraInfo="extraInfo" :cQTeams="qTeams" />
         </div>
     </div>
@@ -21,18 +21,31 @@
             }
         },
         methods: {
-            getQTeams() {
-                this.nextMatches.forEach(match => {
-                    var a = this.allTeams.filter(team => team.id == match.awayTeam.id)
-                    var b = this.allTeams.filter(team => team.id == match.homeTeam.id)
-                    this.qTeams.push(a[0], b[0])
-                })
+            // getQTeams() {
+            //     this.nextMatches.forEach(match => {
+            //         var a = this.allTeams.filter(team => team.id == match.awayTeam.id)
+            //         var b = this.allTeams.filter(team => team.id == match.homeTeam.id)
+            //         this.qTeams.push(a[0], b[0])
+            //     })
 
-                return this.qTeams
+            //     return this.qTeams
+            // },
+            getQualified() {
+                var arr = []
+
+                this.nextMatches.forEach(match => {
+                    if (match.stage == "GROUP_STAGE" && match.matchday > 5) {
+                        var a = this.allTeams.filter(team => team.id == match.awayTeam.id)
+                        var b = this.allTeams.filter(team => team.id == match.homeTeam.id)
+                        this.qTeams.push(a[0], b[0])
+                    }
+                })
+                    return this.qTeams
             }
         },
         created() {
-            this.getQTeams()
+            // this.getQTeams()
+            this.getQualified()
         },
         computed: {
             dataAreIn() {
@@ -50,7 +63,9 @@
         margin-top: 5px;
     }
 
-    .team {}
+    .team {
+        
+    }
 
     h1,
     h2,

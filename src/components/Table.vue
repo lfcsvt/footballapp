@@ -9,7 +9,7 @@
             <th>P</th>
         </thead>
     <tbody>
-        <tr v-for="team in group">
+        <tr v-for="(team, index) in group" :key="index">
         <!-- <td v-if="team.team.crestUrl != null" style="align: left"><img :src=team.team.crestUrl alt="">   {{team.team.name}}</td>
         <td v-else>{{team.team.name}}</td> -->
         <td><img :src=getCrest alt=""> {{team.team.name}}</td>
@@ -31,14 +31,14 @@ export default {
     },
     computed:{
         getCrest(){
-            var id = 0
-            var url = '' 
-       this.group.forEach(team => {
+        return this.group.map(team => {
            var a = this.moreInfo.filter(item => item.id == team.team.id)
-            url = a[0].crest
-       }) 
-        return url  
-        }
+            const rr = a[0].crest
+            console.log(rr)
+
+            return rr
+       })
+    }
     },
     methods:{
 
