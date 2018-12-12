@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <b-navbar toggleable="md" type="light" variant="faded">
+        <!-- <b-navbar toggleable="md" type="light" variant="faded">
 
   <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -27,6 +27,7 @@
     </div> -->
     <!-- <div v-else> -->
     <div id="nav">
+      <Slide left/>
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
       <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>|
       <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraTeamInfo}}">Standings</router-link>
@@ -41,7 +42,11 @@
   </div>
 </template>
 <script>
+import { Slide } from 'vue-burger-menu'
   export default {
+    components: {
+        Slide 
+    },
     data() {
       return {
         teams: [],
@@ -53,53 +58,6 @@
         champions: [],
         extraTeamInfo: [],
         history: [],
-        extraInfo: [{
-            id: 851,
-            name: 'Club Brugge KV',
-            crestUrl: "https://img.uefa.com/imgml/TP/teams/logos/70x70/50043.png"
-          },
-
-          {
-            id: 7283,
-            name: 'FK Crvena Zvezda',
-            crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/Estrela_Vermelha65.png"
-          },
-          {
-            id: 1899,
-            name: 'PAE AEK',
-            crestUrl: 'https://img.uefa.com/imgml/TP/teams/logos/70x70/50129.png'
-          },
-          {
-            id: 1871,
-            name: 'BSC Young Boys',
-            crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/youngboys65.png"
-          },
-          {
-            id: 1887,
-            name: 'FK Shakhtar Donetsk',
-            crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/12/shakhtar-donetsk.svg"
-          },
-          {
-            id: 1881,
-            name: 'FC Viktoria Plzeň',
-            crestUrl: "https://s.glbimg.com/es/sde/f/original/2011/08/24/Viktoria_65x65.png"
-          },
-          {
-            id: 1900,
-            name: 'PFC CSKA Moskva',
-            crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2017/12/03/CSKA-65.png"
-          },
-          {
-            id: 5455,
-            name: 'FK Lokomotiv Moskva',
-            crestUrl: "https://s.glbimg.com/es/sde/f/organizacoes/2012/04/27/lokomotivmoscou65.png"
-          },
-          {
-            id: 1903,
-            name: 'Sport Lisboa e Benfica',
-            crestUrl: "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/benfica.svg"
-          }
-        ]
       }
     },
     methods: {
