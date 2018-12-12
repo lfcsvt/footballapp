@@ -84,14 +84,12 @@
                 horizontal: this.onResize(),
                 standings1: [],
                 groups: [],
-                extraInfo: this.$route.params.extraInfo,
-                moreInfo: this.$parent.extraTeamInfo
+                moreInfo: this.$route.params.extraInfo,
             }
         },
         created() {
             this.getGroups()
             this.addCrest()
-        
         },
         methods: {
             getGroups() {
@@ -119,13 +117,12 @@
             addCrest() {
                 this.groups.forEach(group => {
                     group.forEach(item => {
-                        if (item.team.crestUrl == null) {
-                            this.extraInfo.filter(team => {
+                            this.moreInfo.filter(team => {
                                 return team.id === item.team.id
                             }).forEach(team2 => {
-                                return item.team.crestUrl = team2.crestUrl
+                                return item.team.crestUrl = team2.crest
                             })
-                        }
+                       
                     })
                 })
 

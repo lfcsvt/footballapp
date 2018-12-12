@@ -29,7 +29,7 @@
     <div id="nav">
       <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
       <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>|
-      <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraInfo}}">Standings</router-link>
+      <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraTeamInfo}}">Standings</router-link>
       |
       <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link> |
       <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link>
