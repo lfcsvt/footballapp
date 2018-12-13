@@ -75,4 +75,15 @@
     p {
         color: white;
     }
+      @media only screen and (orientation: landscape) {
+              .teams {
+        background-size: contain;
+        overflow: auto;
+        height: 313px;
+        width: 660px;
+        margin: 10px;
+        margin-top: 5px;
+    }
+  
+  }
 </style>

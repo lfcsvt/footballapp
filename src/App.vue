@@ -1,55 +1,26 @@
 <template>
   <div id="app">
-    <!-- <b-navbar toggleable="md" type="light" variant="faded">
+    <b-navbar toggleable="md" type="dark" variant="faded">
 
-      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+  <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-      <b-navbar-brand href="#">UCL</b-navbar-brand>
+  <b-navbar-brand href="/"><img src="./assets/navlogo.jpg" alt=""></b-navbar-brand>
 
-      <b-collapse is-nav id="nav_collapse">
+  <b-collapse is-nav id="nav_collapse">
+    <b-navbar-nav>
+      <b-nav-item><router-link class="nav-link" :to="{name: 'home', params:{teams: this.standings}}">Home</router-link></b-nav-item>
+      <b-nav-item><router-link class="nav-link" :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link></b-nav-item>
+      <b-nav-item><router-link class="nav-link" :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraTeamInfo}}">Standings</router-link></b-nav-item>
+      <b-nav-item><router-link class="nav-link" :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link></b-nav-item>
+      <b-nav-item><router-link class="nav-link" :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link></b-nav-item>
+      <b-nav-item><router-link class="nav-link" :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo }}">History</router-link></b-nav-item>
+    </b-navbar-nav>
 
-        <b-navbar-nav>
-          <b-nav-item href="#">
-            <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link>
-          </b-nav-item>
-          <b-nav-item href="#">
-            <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>
-          </b-nav-item>
-          <b-nav-item href="#">
-            <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraTeamInfo}}">Standings</router-link>
-          </b-nav-item>
-          <b-nav-item href="#">
-            <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link>
-          </b-nav-item>
-          <b-nav-item href="#">
-            <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.upcomingMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link>
-          </b-nav-item>
-          <b-nav-item href="#">
-            <router-link :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo }}">History</router-link>
-          </b-nav-item>
-        </b-navbar-nav>
-        <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown right>
-          </b-nav-item-dropdown>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar> -->
-    <!-- <div v-if="!dataAreIn">
-      <p>loading......</p>
-    </div> -->
-    <!-- <div v-else> -->
-    <div id="nav">
-      <!-- <Slide left/> -->
-      <router-link :to="{name: 'home', params:{teams: this.standings}}">Home</router-link> |
-      <router-link :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>|
-      <router-link :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraTeamInfo}}">Standings</router-link>
-      |
-      <router-link :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link> |
-      <router-link :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link>
-      |
-      <router-link :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo }}">History</router-link>
-    </div>
-    <!-- </div> -->
+    <b-navbar-nav class="ml-auto">
+    </b-navbar-nav>
+
+  </b-collapse>
+</b-navbar>
     <router-view />
   </div>
 </template>
@@ -83,7 +54,9 @@
           'https://api.football-data.org/v2/competitions/CL/',
           'https://api.football-data.org/v2/competitions/CL/scorers/',
           'https://api.jsonbin.io/b/5c0e4d1633da576e58f7ab3c',
-          'https://api.jsonbin.io/b/5c0e75f733da576e58f7c0ee'
+          'https://api.jsonbin.io/b/5c0e75f733da576e58f7c0ee',
+          'http://api.football-data.org/v2/teams/4'
+          
         ]
         let responseArray = urls.map((url) => {
           let request = new Request(url, {
@@ -106,7 +79,7 @@
           this.allMatches = allResults[1].matches
           this.extraTeamInfo = allResults[6]
           this.history = allResults[7]
-          console.log(this.allMatches)
+          // console.log(this.allMatches)
         })
       },
       getQualified() {

@@ -217,7 +217,7 @@
             align-content: flex-start;
         }
         .standings{
-            height: 355px;
+            height: 313px;
         }
             .group-box {
         background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);

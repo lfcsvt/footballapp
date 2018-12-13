@@ -3,6 +3,7 @@
     <Header msg="Meet the Best" />
     <Header msg2="Experience greatness" />
     <div class="teams">
+    
     </div>
   </div>
 </template>
@@ -31,7 +32,7 @@
 </script>
 <style>
   body {
-    background-image: url(../assets/ucl8.jpg);
+    background-image: url(../assets/uefa2.jpg);
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -44,19 +45,29 @@
     background-size: contain;
     overflow: auto;
     height: 555px;
-    width: 98%;
+    width: 98%; 
   }
 
-  .teams {}
+  .teams {
+
+  }
 
   img {
     height: 25px;
     width: 25px;
   }
+  .uefa-pic{
+    height: 120px;
+    width: 120px;
+     position: absolute;
+    bottom: 40px;
+    left: 110px;;
+   
+  }
 
   @media only screen and (orientation: landscape) {
     body {
-      background-image: url(../assets/ucl3.jpg);
+      background-image: url(../assets/uefa1.jpg);
       background-size: contain;
       background-repeat: no-repeat;
     }

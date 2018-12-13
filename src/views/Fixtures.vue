@@ -88,4 +88,13 @@
     justify-content: space-around;
 
   }
+  @media only screen and (orientation: landscape){
+      .fixtures {
+    background-size: contain;
+    overflow: auto;
+    height: 313px;
+    width: 98%;
+    margin-top: 5px;
+  }
+  }
 </style>

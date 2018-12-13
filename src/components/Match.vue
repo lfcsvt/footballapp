@@ -11,7 +11,7 @@
     </div>
     <p>{{getTime}}</p>
     <p>Venue: {{getHomeVenue}}</p>
-    <b-button variant="outline-primary" v-b-toggle="`collapse2${matchFromFix.id}`" class="map-button" style="padding-top: 0px;">
+    <b-button variant="outline-faded" v-b-toggle="`collapse2${matchFromFix.id}`" class="map-button" style="padding-top: 0px;">
       Directions
       <Collapse :match="matchFromFix" :extraInfo="extraInfo"/>
     </b-button>

@@ -35,17 +35,18 @@
 
         },
         methods: {
+
+
         },
-        computed: {
-        }
+        computed: {}
     }
 </script>
 <style scoped>
- table,
+    table,
     tr,
     th,
     td {
-        color: white;   
+        color: white;
     }
 
     .scorers {
@@ -63,6 +64,7 @@
         margin-bottom: 5px;
         border-radius: 10px;
     }
+
     img {
         height: 45px;
         width: 45px;

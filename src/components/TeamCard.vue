@@ -71,4 +71,16 @@
         align-items: center;
         color: white
     }
+     @media only screen and (orientation: landscape){
+             .team-box {
+        background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
+        width: 95%;
+        height: 235px;
+        margin: auto;
+        margin-bottom: 10px;
+        padding-top: 15px;
+        border-radius: 10px;
+    }
+
+     }
 </style>
