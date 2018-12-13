@@ -34,23 +34,10 @@ export default {
         
     },
     computed:{
-    //     getCrest(){
-    //         var b = ''
-    //     return this.group.map(team => {
-    //        var a = this.moreInfo.filter(item => item.id == team.team.id)
-    //         const rr = a[0].crest
-    //         b = rr.split(' ')
-    //         return b
-    //    })
-    // },
-    addCrest(){
-         
-    },
+
     },
     methods:{
-     crestArr(){
 
-     }
     }
 }
 </script>

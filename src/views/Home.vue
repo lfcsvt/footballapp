@@ -31,7 +31,7 @@
 </script>
 <style>
   body {
-    background-image: url(../assets/ucl4.jpg);
+    background-image: url(../assets/ucl8.jpg);
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -43,7 +43,7 @@
   .home {
     background-size: contain;
     overflow: auto;
-    height: 750px;
+    height: 555px;
     width: 98%;
   }
 

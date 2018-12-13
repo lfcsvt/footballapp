@@ -1,7 +1,7 @@
 <template>
   <div class="fixtures" style="-webkit-overflow-scrolling: touch;">
     <div class="matches">
-      <div class="matchBox" v-for="(match, index) in matches" :key='index'>
+      <div class="matchBox" v-for="(match, index) in getLastMatches()" :key='index'>
         <Match :matchFromFix="match" :allTeams="allTeams" :extraInfo="extraInfo" />
       </div>
     </div>
@@ -20,17 +20,25 @@
       return {
         matches: this.$route.params.matches,
         allTeams: this.$parent.teams,
-        extraInfo: this.$parent.extraTeamInfo
+        extraInfo: this.$parent.extraTeamInfo,
+        allMatches: this.$parent.allMatches
       }
     },
     created() {
-      this.getQTeams()
+      this.getLastMatches()
+      // this.getQTeams()
+      // console.log(this.allMatches)
     },
     methods: {
       getQTeams() {
         this.qualified.forEach(qTeam => {
           return qTeam
         })
+      },
+      getLastMatches(){
+       var match = this.allMatches.filter(match => match.matchday > 5)
+        // console.log(match)
+       return  match
       }
     },
 
@@ -47,7 +55,7 @@
   .fixtures {
     background-size: contain;
     overflow: auto;
-    height: 750px;
+    height: 555px;
     width: 98%;
     margin-top: 5px;
   }

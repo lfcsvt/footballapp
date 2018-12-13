@@ -3,7 +3,10 @@
     <h5>{{matchFromFix.group}}</h5>
     <div class="teams">
       <img :src=getHCrest alt="">
-      <p>{{getHour}}</p>
+      <div class="match-score">
+        <p class="hour">{{getHour}}</p>
+      <p class="hour" v-if="matchFromFix.status == 'FINISHED' ">{{matchFromFix.score.fullTime.homeTeam + ' X ' + matchFromFix.score.fullTime.awayTeam }}</p>
+      </div>
       <img :src=getACrest alt="">
     </div>
     <p>{{getTime}}</p>
@@ -12,10 +15,6 @@
       Directions
       <Collapse :match="matchFromFix" :extraInfo="extraInfo"/>
     </b-button>
-     <!-- <b-button variant="outline-primary" v-b-toggle="`collapse2${index}`" class="map-button" style="padding-top: 0px;">
-      Directions
-      <Collapse :match="matchFromFix" :extraInfo="extraInfo" />
-    </b-button> -->
   </div>
 </template>
 <script>
@@ -85,5 +84,8 @@
 
   .button-name {
     margin-bottom: 0px;
+  }
+  .hour{
+    height: 20px;
   }
 </style>

@@ -60,7 +60,7 @@
         padding-top: 10px;
         background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
         margin: auto;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         border-radius: 10px;
     }
     img {

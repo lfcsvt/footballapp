@@ -58,7 +58,7 @@
     .teams {
         background-size: contain;
         overflow: auto;
-        height: 750px;
+        height: 555px;
         width: 98%;
         margin-top: 5px;
     }

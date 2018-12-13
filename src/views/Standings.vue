@@ -120,7 +120,7 @@
                             this.moreInfo.filter(team => {
                                 return team.id === item.team.id
                             }).forEach(team2 => {
-                                return item.team.crestUrl = team2.crest
+                                 item.team.crestUrl = team2.crest
                             })
                        
                     })
@@ -155,7 +155,7 @@
     .standings {
         background-size: contain;
         overflow: auto;
-        height: 750px;
+        height: 555px;
         width: 98%;
     }
 
