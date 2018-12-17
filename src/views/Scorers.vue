@@ -1,7 +1,7 @@
 <template>
     <div class="scorers">
         <div class="top-scorers">
-            <table>
+            <!-- <table>
                 <thead>
                     <th>Player</th>
                     <th>Name</th>
@@ -16,34 +16,81 @@
                         <td>{{info.numberOfGoals}}</td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
+            <div class="teams" v-for="(team, index) in qTeams" :key="index">
+                <a href=""><img :src=team.crestUrl alt=""></a>
+                <p>{{team.tla}}</p>
+            </div>
         </div>
     </div>
-   
+
 </template>
 <script>
-// import Chat from '@/components/Chat.vue'
     export default {
         name: 'scorers',
-        components:{
-            // Chat
+        components: {
+    
         },
         data() {
             return {
                 scorers: this.$route.params.scorers,
                 matches: [],
-                pictures: []
+                pictures: [],
+                allTeams: this.$parent.teams,
+                qTeams: [],
+                nextMatches: this.$route.params.nextMatches,
+                extraInfo: this.$route.params.extraInfo,
             }
         },
         created() {
-            console.log(this.scorers)
+            this.getSquads()
+            this.getTeams()
+            this.addCrest()
+            // console.log(this.qTeams)
 
         },
         methods: {
+            getSquads() {
+               var url1 = 'http://api.football-data.org/v2/teams/'
+               var id = '4'
+               var url = url1 + id
+                // console.log(url)
+                // fetch( url , {
+                //         headers: new Headers({
+                //             'X-Auth-Token': 'e629d8e25d5140eea6726726830817e7',
+                //         })
+                //     })
+                //     .then(response => response.json())
+                //     .then(response => {
+                //         console.log(response);
+                //     })
+                //     .catch(err => console.log(err));
+            },
+            getId(){
 
+            },
+               getTeams(){
+                    this.nextMatches.forEach(match => {
+                    if (match.stage == "GROUP_STAGE" && match.matchday > 5) {
+                        var a = this.allTeams.filter(team => team.id == match.awayTeam.id)
+                        var b = this.allTeams.filter(team => team.id == match.homeTeam.id)
+                        this.qTeams.push(a[0], b[0])
+                    }
+                })
+                    console.log(this.qTeam)
+                    return this.qTeams
+            },
+                 addCrest() {
+                this.qTeams.forEach(team => {
+                       var a = this.extraInfo.filter(squad => squad.id == team.id)
+                      return team.crestUrl =  a[0].crest
+                }) 
+            }
 
         },
-        computed: {}
+        computed: {
+
+        }
     }
 </script>
 <style scoped>
@@ -62,17 +109,27 @@
 
     .top-scorers {
         height: 555px !important;
-        width: 340px !important;
+        width: 350px !important;
         padding-top: 10px;
         background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
         margin: auto;
         margin-bottom: 5px;
         border-radius: 10px;
+        overflow: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly
+    }
+    .teams{
+        height: 50px !important;
+        width: 40px !important;
+       
     }
 
     img {
         height: 45px;
-        width: 45px;
+        width: 40px;
+        margin: 5px;
     }
 
     @media only screen and (orientation: landscape) {

@@ -3,10 +3,7 @@
     <b-navbar toggleable="md" type="dark" variant="faded">
 
   <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-   <!-- <Chat/> -->
-
-  
-
+  <a href=""><router-link class="nav-link" :to="{ name: 'chatRoom', params: {}}">ChatRoom</router-link></a>
   <b-navbar-brand href="/"><img src="./assets/navlogo.jpg" alt=""></b-navbar-brand>
 
   <b-collapse is-nav id="nav_collapse">
@@ -14,10 +11,9 @@
       <b-nav-item><router-link class="nav-link" :to="{name: 'home', params:{teams: this.standings}}">Home</router-link></b-nav-item>
       <b-nav-item><router-link class="nav-link" :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link></b-nav-item>
       <b-nav-item><router-link class="nav-link" :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraTeamInfo}}">Standings</router-link></b-nav-item>
-      <b-nav-item><router-link class="nav-link" :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link></b-nav-item>
+      <b-nav-item><router-link class="nav-link" :to="{ name: 'scorers', params: { scorers: this.scorers, allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo}}">Scorers</router-link></b-nav-item>
       <b-nav-item><router-link class="nav-link" :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link></b-nav-item>
-      <b-nav-item><router-link class="nav-link" :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo }}">History</router-link></b-nav-item>
-      <b-nav-item><router-link class="nav-link" :to="{ name: 'chatRoom', params: {}}">ChatRoom</router-link></b-nav-item>
+      <b-nav-item><router-link class="nav-link" :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo}}">History</router-link></b-nav-item>
     </b-navbar-nav>
 
     <b-navbar-nav class="ml-auto">
@@ -91,8 +87,11 @@ import Chat from '@/components/Chat.vue'
       },
       getQualified() {
         var teams1 = []
-        this.upcomingMatches.forEach(match => {
-          this.qualified.push(match.awayTeam, match.homeTeam)
+        this.allMatches.forEach(match => {
+         if(match.stage == "GROUP_STAGE"){
+           alert('working')
+           this.qualified.push(match.awayTeam, match.homeTeam)
+         }
         })
         return this.qualified
       }
@@ -100,6 +99,7 @@ import Chat from '@/components/Chat.vue'
     created() {
       this.getQualified()
       this.getData()
+      console.log(this.qualified)
     },
     computed: {
       // datAreIn(){

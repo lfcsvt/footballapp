@@ -1,33 +1,36 @@
 <template>
   <div class="chat">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <button v-on:click="login()"> Login </button>
-    <button v-on:click="logout()"> Logout </button>
-    <hr>
-    <div>
-      <input type="text" v-model="msg">
-      <button v-on:click="writeNewPost()">Send</button>
-      <hr>
-      <div class="message-room">
+        <div class="message-room">
           <div v-for="(msg, index) in messages" :key="index">
         <p>{{msg.name}}</p>
         <p>{{msg.date}}</p>
         <p>{{msg.body}}</p>
       </div>
       </div>
+      <hr>
+      <Header msg2="Welcome to UCLchat"/>
+    <b-button v-on:click="login()"> Login </b-button>
+    <b-button v-on:click="logout()"> Logout </b-button>
+    <hr>
+    <div>
+      <div class="chat-command">
+         <input type="text" v-model="msg">
+      <b-button variant="info" v-on:click="writeNewPost()">Send</b-button>
+      </div>
+      <hr>
     </div>
   </div>
 </template>
 <script>
 // @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
+import Header from "@/components/Header.vue";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 export default {
   name: "home",
   components: {
-    // HelloWorld
+    Header
   },
   data() {
     return {
@@ -72,6 +75,7 @@ export default {
         .signOut()
         .then(function() {
           console.log("Sign-out successful");
+          
         })
         .catch(function(error) {
           // An error happened.
@@ -79,7 +83,10 @@ export default {
         });
     },
     writeNewPost() {
-      console.log(this.user.displayName);
+      if(this.user == null){
+        alert('You must be logged in to use the chat.')
+      }else {
+         console.log(this.user.displayName);
       console.log(this.msg);
       const post = {
         name: this.user.displayName,
@@ -99,6 +106,7 @@ export default {
         .update(updates);
       this.msg = null;
       this.getPosts();
+      }
     },
     getPosts() {
       firebase
@@ -116,11 +124,15 @@ button {
   margin: 30px;
 }
 .chat{
-height: 300px;
+height: 350px;
 }
 .message-room{
-width: 280px;
-height: 300px;
-overflow: auto;
+width: 300px;
+max-height: 270px;
+overflow-y: scroll;
+
+}
+.chat-command{
+
 }
 </style>
