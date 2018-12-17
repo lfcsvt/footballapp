@@ -26,7 +26,7 @@ margin: auto;
 }
 .chat-body{
 width: 300px;
-height: 560px;
+height: 570px;
 background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
 border-radius: 10px;
 margin: auto;

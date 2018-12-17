@@ -1,13 +1,5 @@
 <template>
   <div class="chat">
-        <div class="message-room">
-          <div v-for="(msg, index) in messages" :key="index">
-        <p>{{msg.name}}</p>
-        <p>{{msg.date}}</p>
-        <p>{{msg.body}}</p>
-      </div>
-      </div>
-      <hr>
       <Header msg2="Welcome to UCLchat"/>
     <b-button v-on:click="login()"> Login </b-button>
     <b-button v-on:click="logout()"> Logout </b-button>
@@ -19,6 +11,14 @@
       </div>
       <hr>
     </div>
+    <hr>
+       <div class="message-room">
+          <div class="message" v-for="(msg, index) in messages" :key="index">
+        <p>{{msg.name}}</p>
+        <p>{{msg.date}}</p>
+        <p>{{msg.body}}</p>
+      </div>
+      </div>
   </div>
 </template>
 <script>
@@ -128,11 +128,21 @@ height: 350px;
 }
 .message-room{
 width: 300px;
-max-height: 270px;
-overflow-y: scroll;
+max-height: 220px;
+overflow: auto;
+padding-bottom: 20px;
+
 
 }
 .chat-command{
 
+}
+.message{
+width: 270px;
+height: 100px;
+background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
+border-radius: 10px;
+overflow: auto;
+margin: 10px;
 }
 </style>
