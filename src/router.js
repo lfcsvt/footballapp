@@ -40,6 +40,11 @@ export default new Router({
       path: '/history',
       name: 'history',
       component: ()=>import(/* webpackChunkName: "history" */  './views/History.vue')
+    },
+    {
+      path: '/chatRoom',
+      name: 'chatRoom',
+      component: ()=>import(/* webpackChunkName: "chatRoom" */  './views/ChatRoom.vue')
     }
   ]
 })

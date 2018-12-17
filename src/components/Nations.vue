@@ -40,5 +40,6 @@
         height: 50px;
         width: 40px;
         margin: 15px;
+        border-radius: 5px;
     }
 </style>

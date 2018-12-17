@@ -19,10 +19,15 @@
             </table>
         </div>
     </div>
+   
 </template>
 <script>
+// import Chat from '@/components/Chat.vue'
     export default {
         name: 'scorers',
+        components:{
+            // Chat
+        },
         data() {
             return {
                 scorers: this.$route.params.scorers,

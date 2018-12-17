@@ -6,6 +6,7 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { Modal } from 'bootstrap-vue/es/components';
+import firebase from "firebase/app"
 
 Vue.use(BootstrapVue);
 Vue.use(Modal);

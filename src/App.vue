@@ -3,6 +3,9 @@
     <b-navbar toggleable="md" type="dark" variant="faded">
 
   <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+   <!-- <Chat/> -->
+
+  
 
   <b-navbar-brand href="/"><img src="./assets/navlogo.jpg" alt=""></b-navbar-brand>
 
@@ -14,9 +17,11 @@
       <b-nav-item><router-link class="nav-link" :to="{ name: 'scorers', params: { scorers: this.scorers }}">Scorers</router-link></b-nav-item>
       <b-nav-item><router-link class="nav-link" :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link></b-nav-item>
       <b-nav-item><router-link class="nav-link" :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo }}">History</router-link></b-nav-item>
+      <b-nav-item><router-link class="nav-link" :to="{ name: 'chatRoom', params: {}}">ChatRoom</router-link></b-nav-item>
     </b-navbar-nav>
 
     <b-navbar-nav class="ml-auto">
+      
     </b-navbar-nav>
 
   </b-collapse>
@@ -25,12 +30,14 @@
   </div>
 </template>
 <script>
+import Chat from '@/components/Chat.vue'
   import {
     Slide
   } from 'vue-burger-menu'
   export default {
     components: {
-      Slide
+      Slide, 
+      Chat
     },
     data() {
       return {
