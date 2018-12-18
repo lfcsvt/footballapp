@@ -43,17 +43,23 @@
             }
         },
         created() {
-            this.getSquads()
+            // this.getId()
             this.getTeams()
             this.addCrest()
-            this.getId()
+            this.getSquads()
+            
             // console.log(this.qTeams)
 
         },
         methods: {
+               getId(){
+                  this.qTeams.filter(team => {
+                    return team.id
+                })
+            },
             getSquads() {
                var url1 = 'http://api.football-data.org/v2/teams/'
-               var id = this.getId()
+               var id = this.getId
                console.log(id)
                var url = url1 + id
                 console.log(url)
@@ -68,9 +74,7 @@
                 //     })
                 //     .catch(err => console.log(err));
             },
-            getId(){
-
-            },
+        
                getTeams(){
                     this.nextMatches.forEach(match => {
                     if (match.stage == "GROUP_STAGE" && match.matchday > 5) {
@@ -87,17 +91,16 @@
                        var a = this.extraInfo.filter(squad => squad.id == team.id)
                       return team.crestUrl =  a[0].crest
                 }) 
-            },
+            }
+
+        },
+        computed: {
                 getId(){
                this.qTeams.filter(team => {
                     return team.id
                 })
                
             }
-
-        },
-        computed: {
-    
         }
     }
 </script>

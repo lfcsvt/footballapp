@@ -1,7 +1,7 @@
 <template>
   <div class="fixtures" style="-webkit-overflow-scrolling: touch;">
     <div class="matches">
-      <div class="matchBox" v-for="(match, index) in getLastMatches()" :key='index'>
+      <div class="matchBox" v-for="(match, index) in matches" :key='index'>
         <Match :matchFromFix="match" :allTeams="allTeams" :extraInfo="extraInfo" />
       </div>
     </div>
@@ -27,7 +27,7 @@
     created() {
       this.getLastMatches()
       // this.getQTeams()
-      // console.log(this.allMatches)
+      console.log(this.Matches)
     },
     methods: {
       getQTeams() {

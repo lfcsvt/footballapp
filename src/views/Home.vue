@@ -3,14 +3,13 @@
     <Header msg="Meet the Best" />
     <Header msg2="Experience greatness" />
     <div class="teams">
-    
     </div>
   </div>
 </template>
 
 <script>
   import Header from '@/components/Header.vue'
-  import VPlayer from '@/components/VPlayer.vue'
+  
 
   export default {
     name: 'home',
