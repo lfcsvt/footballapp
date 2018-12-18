@@ -18,7 +18,7 @@
                 </tbody>
             </table> -->
             <div class="teams" v-for="(team, index) in qTeams" :key="index">
-                <div @click="getId()"><img :src=team.crestUrl alt=""></div>
+                <p @click="getId()"><img :src=team.crestUrl alt=""></p>
                 <p>{{team.tla}}</p>
             </div>
         </div>
@@ -43,7 +43,7 @@
             }
         },
         created() {
-            // this.getId()
+            this.getId()
             this.getTeams()
             this.addCrest()
             this.getSquads()
@@ -54,12 +54,13 @@
         methods: {
                getId(){
                   this.qTeams.filter(team => {
+                    console.log(team.id)
                     return team.id
                 })
             },
             getSquads() {
                var url1 = 'http://api.football-data.org/v2/teams/'
-               var id = this.getId
+               var id = this.getId()
                console.log(id)
                var url = url1 + id
                 console.log(url)
@@ -95,12 +96,7 @@
 
         },
         computed: {
-                getId(){
-               this.qTeams.filter(team => {
-                    return team.id
-                })
-               
-            }
+      
         }
     }
 </script>

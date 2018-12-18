@@ -82,14 +82,12 @@ import Chat from '@/components/Chat.vue'
           this.allMatches = allResults[1].matches
           this.extraTeamInfo = allResults[6]
           this.history = allResults[7]
-          console.log(this.upcomingMatches)
         })
       },
       getQualified() {
         var teams1 = []
         this.allMatches.forEach(match => {
          if(match.stage == "GROUP_STAGE"){
-           alert('working')
            this.qualified.push(match.awayTeam, match.homeTeam)
          }
         })
@@ -99,7 +97,6 @@ import Chat from '@/components/Chat.vue'
     created() {
       this.getQualified()
       this.getData()
-      console.log(this.qualified)
     },
     computed: {
       // datAreIn(){

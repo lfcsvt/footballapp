@@ -7,7 +7,9 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import { Modal } from 'bootstrap-vue/es/components';
 import firebase from "firebase/app"
+import VueChatScroll from 'vue-chat-scroll'
 
+Vue.use(VueChatScroll)
 Vue.use(BootstrapVue);
 Vue.use(Modal);
 
