@@ -45,6 +45,11 @@ export default new Router({
       path: '/chatRoom',
       name: 'chatRoom',
       component: ()=>import(/* webpackChunkName: "chatRoom" */  './views/ChatRoom.vue')
+    },
+    {
+      path: '/roster',
+      name: 'roster',
+      component: ()=>import(/* webpackChunkName: "Roster" */  './views/Roster.vue')
     }
   ]
 })

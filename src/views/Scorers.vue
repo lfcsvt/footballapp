@@ -2,7 +2,7 @@
     <div class="scorers">
         <div class="top-scorers">
             <div class="teams" v-for="(team, index) in qTeams" :key="index">
-                <input class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id" />
+                <input class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/>
             </div>
         </div>
     </div>
@@ -16,7 +16,7 @@
         },
         data() {
             return {
-                scorers: this.$route.params.scorers,
+                // scorers: this.$route.params.scorers,
                 matches: [],
                 pictures: [],
                 allTeams: this.$parent.teams,
@@ -104,8 +104,8 @@
     }
 
     .scorers {
-        display: flex;
-        margin: auto;
+        
+      
 
     }
 
