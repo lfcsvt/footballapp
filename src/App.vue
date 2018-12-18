@@ -57,8 +57,7 @@ import Chat from '@/components/Chat.vue'
           'https://api.football-data.org/v2/competitions/CL/',
           'https://api.football-data.org/v2/competitions/CL/scorers/',
           'https://api.jsonbin.io/b/5c0e4d1633da576e58f7ab3c',
-          'https://api.jsonbin.io/b/5c0e75f733da576e58f7c0ee',
-          'https://api.football-data.org/v2/teams/109'
+          'https://api.jsonbin.io/b/5c0e75f733da576e58f7c0ee'
           
         ]
         let responseArray = urls.map((url) => {
