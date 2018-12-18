@@ -82,6 +82,14 @@ import Chat from '@/components/Chat.vue'
           this.allMatches = allResults[1].matches
           this.extraTeamInfo = allResults[6]
           this.history = allResults[7]
+          console.log(this.teams)
+          console.log(this.upcomingMatches)
+          console.log(this.standings)
+          console.log( this.scorers)
+          console.log(this.allMatches)
+          console.log(this.allMatches)
+          console.log(this.extraTeamInfo)
+          console.log(this.history)
         })
       },
       getQualified() {
