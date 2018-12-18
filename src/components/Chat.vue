@@ -7,7 +7,7 @@
     <div>
       <div class="chat-command">
          <input type="text" v-model="msg">
-      <b-button variant="info" v-on:click="writeNewPost()">Send</b-button>
+      <b-button variant="info" size="sm" v-on:click="writeNewPost()">Send</b-button>
       </div>
       <hr>
     </div>
