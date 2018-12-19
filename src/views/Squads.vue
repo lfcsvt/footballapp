@@ -2,7 +2,13 @@
     <div class="scorers">
         <div class="top-scorers">
             <div class="teams" v-for="(team, index) in qTeams" :key="index">
-                <input class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/>
+                <!-- <input class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/> -->
+                <div v-if="!dataAreIn">
+                    <router-link  :to="{ name: 'roster', params:{squads: roster}}"><img class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/></router-link>
+                </div>
+                <div v-else>
+                     <!-- <router-link  :to="{ name: 'roster'}"><img class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/></router-link> -->
+                </div>
             </div>
         </div>
     </div>
@@ -10,7 +16,7 @@
 </template>
 <script>
     export default {
-        name: 'scorers',
+        name: 'squads',
         components: {
 
         },
@@ -23,52 +29,35 @@
                 qTeams: [],
                 nextMatches: this.$route.params.nextMatches,
                 extraInfo: this.$route.params.extraInfo,
-                squad: []
+                roster: []
             }
         },
         created() {
 
             this.getTeams()
             this.addCrest()
-            this.getSquads()
         },
         methods: {
             getId(element) {
                 var id = element
                 var url1 = 'https://api.football-data.org/v2/teams/'
                 var url = url1 + id
-                if(id == null){
+                if (id == null) {
                     alert('choose a team')
-                }else{
+                } else {
                     fetch(url, {
-                        headers: new Headers({
-                            'X-Auth-Token': 'e629d8e25d5140eea6726726830817e7',
+                            headers: new Headers({
+                                'X-Auth-Token': 'e629d8e25d5140eea6726726830817e7',
+                            })
                         })
-                    })
-                    .then(response => response.json())
-                    .then(response => {
-                        this.squad = response.squad
-                        console.log(this.squad)
-                    })
-                    .catch(err => console.log(err));
+                        .then(response => response.json())
+                        .then(response => {
+                            this.roster = response.squad
+                            console.log(this.roster)
+                            return this.roster
+                        })
+                        .catch(err => console.log(err));
                 }
-            },
-            getSquads() {
-                var url1 = 'https://api.football-data.org/v2/teams/'
-
-
-                var url = url1 + this.teamId
-                console.log(url)
-                // fetch(url, {
-                //         headers: new Headers({
-                //             'X-Auth-Token': 'e629d8e25d5140eea6726726830817e7',
-                //         })
-                //     })
-                //     .then(response => response.json())
-                //     .then(response => {
-                //         console.log(response);
-                //     })
-                //     .catch(err => console.log(err));
             },
 
             getTeams() {
@@ -79,7 +68,6 @@
                         this.qTeams.push(a[0], b[0])
                     }
                 })
-                console.log(this.qTeam)
                 return this.qTeams
             },
             addCrest() {
@@ -90,8 +78,11 @@
             }
 
         },
-        computed: {
-
+        computed:{
+            dataAreIn(){
+               return this.roster.length > 0
+    
+            }
         }
     }
 </script>
@@ -103,11 +94,7 @@
         color: white;
     }
 
-    .scorers {
-        
-      
-
-    }
+    .scorers {}
 
     .top-scorers {
         height: 555px !important;
@@ -150,7 +137,7 @@
             overflow: auto;
             display: flex;
             flex-direction: column;
-            
+
         }
 
         table,

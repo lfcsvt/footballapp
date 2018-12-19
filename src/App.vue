@@ -2,37 +2,54 @@
   <div id="app">
     <b-navbar toggleable="md" type="dark" variant="faded">
 
-  <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-  <a href=""><router-link class="nav-link" :to="{ name: 'chatRoom', params: {}}">ChatRoom</router-link></a>
-  <b-navbar-brand href="/"><img src="./assets/navlogo.jpg" alt=""></b-navbar-brand>
+      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+      <a href="">
+        <router-link class="nav-link" :to="{ name: 'chatRoom', params: {}}">ChatRoom</router-link>
+      </a>
+      <b-navbar-brand href="/"><img src="./assets/navlogo.jpg" alt=""></b-navbar-brand>
 
-  <b-collapse is-nav id="nav_collapse">
-    <b-navbar-nav>
-      <b-nav-item><router-link class="nav-link" :to="{name: 'home', params:{teams: this.standings}}">Home</router-link></b-nav-item>
-      <b-nav-item><router-link class="nav-link" :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link></b-nav-item>
-      <b-nav-item><router-link class="nav-link" :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraTeamInfo}}">Standings</router-link></b-nav-item>
-      <b-nav-item><router-link class="nav-link" :to="{ name: 'scorers', params: { scorers: this.scorers, allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo}}">Scorers</router-link></b-nav-item>
-      <b-nav-item><router-link class="nav-link" :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link></b-nav-item>
-      <b-nav-item><router-link class="nav-link" :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo}}">History</router-link></b-nav-item>
-    </b-navbar-nav>
+      <b-collapse is-nav id="nav_collapse">
+        <b-navbar-nav>
+          <b-nav-item>
+            <router-link class="nav-link" :to="{name: 'home', params:{teams: this.standings}}">Home</router-link>
+          </b-nav-item>
+          <b-nav-item>
+            <router-link class="nav-link" :to="{ name: 'fixtures', params: { matches: this.upcomingMatches, extraTeamInfo: this.extraTeamInfo}}">Fixtures</router-link>
+          </b-nav-item>
+          <b-nav-item>
+            <router-link class="nav-link" :to="{ name: 'standings', params: { results: this.standings , extraInfo: this.extraTeamInfo}}">Standings</router-link>
+          </b-nav-item>
+          <b-nav-item>
+            <router-link class="nav-link" :to="{ name: 'squads', params: {  allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo}}">Squads</router-link>
+          </b-nav-item>
+          <b-nav-item>
+            <router-link class="nav-link" :to="{ name: 'teams', params: { allTeams: this.teams, nextMatches: this.allMatches, extraInfo: this.extraTeamInfo }}">Teams</router-link>
+          </b-nav-item>
+          <b-nav-item>
+            <router-link class="nav-link" :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo}}">History</router-link>
+          </b-nav-item>
+            <!-- <b-nav-item>
+            <router-link class="nav-link" :to="{ name: 'roster'}">Roster</router-link>
+          </b-nav-item> -->
+        </b-navbar-nav>
 
-    <b-navbar-nav class="ml-auto">
-      
-    </b-navbar-nav>
+        <b-navbar-nav class="ml-auto">
 
-  </b-collapse>
-</b-navbar>
+        </b-navbar-nav>
+
+      </b-collapse>
+    </b-navbar>
     <router-view />
   </div>
 </template>
 <script>
-import Chat from '@/components/Chat.vue'
+  import Chat from '@/components/Chat.vue'
   import {
     Slide
   } from 'vue-burger-menu'
   export default {
     components: {
-      Slide, 
+      Slide,
       Chat
     },
     data() {
@@ -40,7 +57,7 @@ import Chat from '@/components/Chat.vue'
         teams: [],
         standings: [],
         upcomingMatches: [],
-        scorers: [],
+        Squads: [],
         qualified: [],
         allMatches: [],
         champions: [],
@@ -58,7 +75,7 @@ import Chat from '@/components/Chat.vue'
           'https://api.football-data.org/v2/competitions/CL/scorers/',
           'https://api.jsonbin.io/b/5c0e4d1633da576e58f7ab3c',
           'https://api.jsonbin.io/b/5c0e75f733da576e58f7c0ee'
-          
+
         ]
         let responseArray = urls.map((url) => {
           let request = new Request(url, {
@@ -77,26 +94,19 @@ import Chat from '@/components/Chat.vue'
           this.teams = allResults[0].teams
           this.upcomingMatches = allResults[2].matches
           this.standings = allResults[3].standings
-          this.scorers = allResults[5].scorers
+          this.Squads = allResults[5].Squads
           this.allMatches = allResults[1].matches
           this.extraTeamInfo = allResults[6]
           this.history = allResults[7]
-          console.log(this.teams)
-          console.log(this.upcomingMatches)
-          console.log(this.standings)
-          console.log( this.scorers)
-          console.log(this.allMatches)
-          console.log(this.allMatches)
-          console.log(this.extraTeamInfo)
-          console.log(this.history)
+
         })
       },
       getQualified() {
         var teams1 = []
         this.allMatches.forEach(match => {
-         if(match.stage == "GROUP_STAGE"){
-           this.qualified.push(match.awayTeam, match.homeTeam)
-         }
+          if (match.stage == "GROUP_STAGE") {
+            this.qualified.push(match.awayTeam, match.homeTeam)
+          }
         })
         return this.qualified
       }
@@ -111,7 +121,7 @@ import Chat from '@/components/Chat.vue'
       //     this.teams.length > 0,
       //     this. standings.length > 0,
       //     this.upcomingMatches.length > 0,
-      //     this.scorers.length > 0
+      //     this.Squads.length > 0
       //   ]  
       // }
     }

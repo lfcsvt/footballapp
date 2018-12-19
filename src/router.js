@@ -26,9 +26,9 @@ export default new Router({
      
     },
     {
-      path:'/scorers',
-      name: 'scorers',
-      component: () => import(/* webpackChunkName: "scorers" */ './views/Scorers.vue')
+      path:'/squads',
+      name: 'squads',
+      component: () => import(/* webpackChunkName: "squads" */ './views/Squads.vue')
      
     },
     {
