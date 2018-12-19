@@ -4,7 +4,7 @@
             <div class="teams" v-for="(team, index) in qTeams" :key="index">
 
                 <div v-if="!dataAreIn">
-                    <router-link  :to="{ name: 'roster'}"><img class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/></router-link>
+                    <img class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/>
                 </div>
             </div>
         </div>
@@ -30,7 +30,6 @@
             }
         },
         created() {
-
             this.getTeams()
             this.addCrest()
         },
@@ -50,11 +49,12 @@
                         .then(response => response.json())
                         .then(response => {
                             this.squad = response.squad
-                            console.log(this.squad)
-                            return this.squad
+                           
+                            this.$router.push({ name: 'roster', params: {squad: this.squad } })
+                           
                         })
                         .catch(err => console.log(err));
-                }
+                }   
             },
 
             getTeams() {
