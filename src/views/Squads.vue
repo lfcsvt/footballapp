@@ -2,12 +2,9 @@
     <div class="scorers">
         <div class="top-scorers">
             <div class="teams" v-for="(team, index) in qTeams" :key="index">
-                <!-- <input class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/> -->
+
                 <div v-if="!dataAreIn">
-                    <router-link  :to="{ name: 'roster', params:{squads: roster}}"><img class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/></router-link>
-                </div>
-                <div v-else>
-                     <!-- <router-link  :to="{ name: 'roster'}"><img class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/></router-link> -->
+                    <router-link  :to="{ name: 'roster'}"><img class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/></router-link>
                 </div>
             </div>
         </div>
@@ -29,7 +26,7 @@
                 qTeams: [],
                 nextMatches: this.$route.params.nextMatches,
                 extraInfo: this.$route.params.extraInfo,
-                roster: []
+                squad: []
             }
         },
         created() {
@@ -52,9 +49,9 @@
                         })
                         .then(response => response.json())
                         .then(response => {
-                            this.roster = response.squad
-                            console.log(this.roster)
-                            return this.roster
+                            this.squad = response.squad
+                            console.log(this.squad)
+                            return this.squad
                         })
                         .catch(err => console.log(err));
                 }
@@ -80,7 +77,7 @@
         },
         computed:{
             dataAreIn(){
-               return this.roster.length > 0
+               return this.squad.length > 0
     
             }
         }

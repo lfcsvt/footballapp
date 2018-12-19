@@ -25,7 +25,7 @@
              <p style="color: red">Name</p>
             <h5 style="color: red">4</h5>
         </div>
-        <div class="defensive-midfield">
+         <div class="defensive-midfield">
             <p>q</p>
            <p style="color: red">Name</p>
             <h5 style="color: red">5</h5>
@@ -65,8 +65,11 @@
                 squads:this.$route.params.squads
             }
         },
-        created(){
+        beforeCreate(){
             this.squads = this.$route.params.squads
+        },
+        created(){
+            console.log(this.squads)
         },
         methods:{
             getGoallie(){
@@ -79,7 +82,7 @@
             }
         },
         mounted(){
-            console.log(this.squads)
+           
             // this.getGoallie()
         }
     }
@@ -120,7 +123,7 @@
         background-image: url('../assets/teamJersey2.png');
         position: relative;
         top: 110px;
-        left: 20px;
+        left: 30px;
         height: 80px;
         width: 80px;
     }
@@ -196,5 +199,122 @@
     p{
         margin-bottom: 0px;
     }
+ @media only screen and (orientation: landscape) {
+        .field {
+        height: 450px;
+        width: 666px;
+        background-image: url('../assets/field2.jpg');
+        background-size: cover;
+        z-index: -1;
+    }
+    .goalkeeper {
+        background-image: url('../assets/teamJersey2.png');
+        position: relative;
+        bottom: -180px;
+        left: 10px;
+        height: 80px;
+        width: 80px;
+        z-index: 0;
+        -webkit-transform: rotate(90deg);
+    }
 
+    .right-wing {
+        background-image: url('../assets/teamJersey2.png');
+        position: relative;
+        top: 260px;
+        left: 240px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+    .left-wing {
+        background-image: url('../assets/teamJersey2.png');
+        position: relative;
+        top: -130px;
+        left: 240px;
+        height: 80px;
+        width: 80px;
+         -webkit-transform: rotate(90deg);
+    }
+
+    .left-back {
+        background-image: url('../assets/teamJersey2.png');
+        position: relative;
+        top: -140px;
+        left: 130px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+
+    .center-back {
+        background-image: url('../assets/teamJersey2.png');
+        position: relative;
+        top: -20px;
+        left: 130px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+
+    .defensive-midfield {
+        background-image: url('../assets/teamJersey2.png');
+       position: relative;
+        bottom: 210px;
+        left: 260px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+
+    .right-midfield {
+        background-image: url('../assets/teamJersey2.png');
+       position: relative;
+        bottom: 130px;
+        left: 360px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+
+    .left-midfield {
+        background-image: url('../assets/teamJersey2.png');
+      position: relative;
+        top: -530px;
+        left: 360px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+    .left-wingger{
+        background-image: url('../assets/teamJersey2.png');
+        position: relative;
+        bottom: 630px;
+        left: 520px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+     .right-wingger{
+        background-image: url('../assets/teamJersey2.png');
+        position: relative;
+        bottom: 350px;
+        left: 520px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+    .forward{
+        background-image: url('../assets/teamJersey2.png');
+        position: relative;
+        bottom: 610px;
+        left: 500px;
+        height: 80px;
+        width: 80px;
+        -webkit-transform: rotate(90deg);
+    }
+    p{
+        margin-bottom: 0px;
+    } 
+ } 
 </style>
