@@ -12,47 +12,47 @@
         </div>
         <div class="left-wing">
             <p>q</p>
-            <p style="color: red">Name</p>
+            <p style="color: red">{{getLeftWing}}</p>
             <h5 style="color: red">6</h5>
         </div>
         <div class="left-back">
             <p>q</p>
-            <p style="color: red">Name</p>
+            <p style="color: red">{{getCenterBack}}</p>
             <h5 style="color: red">3</h5>
         </div>
         <div class="center-back">
             <p>q</p>
-            <p style="color: red">Name</p>
+            <p style="color: red">{{getLeftBack}}</p>
             <h5 style="color: red">4</h5>
         </div>
         <div class="defensive-midfield">
             <p>q</p>
-            <p style="color: red">Name</p>
+            <p style="color: red">{{getMidDef}}</p>
             <h5 style="color: red">5</h5>
         </div>
         <div class="right-midfield">
             <p>q</p>
-            <p style="color: red">Name</p>
-            <h5 style="color: red">7</h5>
+            <p style="color: red">{{getMidRig}}</p>
+            <h5 style="color: red">8</h5>
         </div>
         <div class="left-midfield">
             <p>q</p>
-            <p style="color: red">Name</p>
+            <p style="color: red">{{getMidLef}}</p>
             <h5 style="color: red">10</h5>
         </div>
         <div class="left-wingger">
             <p>q</p>
-            <p style="color: red">Name</p>
+            <p style="color: red">{{getLefWin}}</p>
             <h5 style="color: red">11</h5>
         </div>
         <div class="right-wingger">
             <p>q</p>
-            <p style="color: red">Name</p>
-            <h5 style="color: red">8</h5>
+            <p style="color: red">{{getRigWin}}</p>
+            <h5 style="color: red">7</h5>
         </div>
         <div class="forward">
             <p>q</p>
-            <p style="color: red">Name</p>
+            <p style="color: red">{{getNine}}</p>
             <h5 style="color: red">9</h5>
         </div>
     </div>
@@ -75,15 +75,61 @@
         },
         computed: {
             getGoal() {
-                var a = this.squad.filter(player => player.shirtNumber == 1 || player.position == "Goalkeeper")
+                var a = this.squad.filter(player => player.shirtNumber == 1)
                 var name = a[0].name.split(' ')
                 return name.slice(-1).pop()
             },
-              getRightWing() {
-                var a = this.squad.filter(player => player.shirtNumber == 2 || player.position == "Defender")
+            getRightWing() {
+                var a = this.squad.filter(player => player.shirtNumber == 2)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getLeftWing() {
+                var a = this.squad.filter(player => player.shirtNumber == 6)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getLeftBack() {
+                var a = this.squad.filter(player => player.shirtNumber == 4)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getCenterBack() {
+                var a = this.squad.filter(player => player.shirtNumber == 3)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getMidDef() {
+                var a = this.squad.filter(player => player.shirtNumber == 5)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getMidLef() {
+                var a = this.squad.filter(player => player.shirtNumber == 10)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getMidRig() {
+                var a = this.squad.filter(player => player.shirtNumber == 8)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getRigWin() {
+                var a = this.squad.filter(player => player.shirtNumber == 7)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getLefWin() {
+                var a = this.squad.filter(player => player.shirtNumber == 11)
+                var name = a[0].name.split(' ')
+                return name.slice(-1).pop()
+            },
+            getNine() {
+                var a = this.squad.filter(player => player.shirtNumber == 9)
                 var name = a[0].name.split(' ')
                 return name.slice(-1).pop()
             }
+
 
 
         }
