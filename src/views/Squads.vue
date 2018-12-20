@@ -1,5 +1,6 @@
 <template>
     <div class="scorers" style="-webkit-overflow-scrolling: touch;">
+        <h3>Click on a Team</h3>
         <div class="top-scorers">
             <div class="teams" v-for="(team, index) in qTeams" :key="index">
                 <div v-if="!dataAreIn">
@@ -130,7 +131,7 @@
             padding-top: 10px;
             padding-left: 5px;
             background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
-            margin: auto;
+            /* margin: auto; */
             margin-bottom: 0px;
             margin-top: 0px;
             border-radius: 10px;
@@ -151,8 +152,13 @@
 
         .scorers {
             display: flex;
-            margin: auto;
+            flex-wrap: wrap;
+            overflow: auto;
 
+        }
+        h3{
+            margin: auto;
+            color: white;
         }
     }
 </style>

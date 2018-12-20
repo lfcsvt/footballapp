@@ -8,7 +8,7 @@
       </a>
       <b-navbar-brand href="/"><img src="./assets/navlogo.jpg" alt=""></b-navbar-brand>
 
-      <b-collapse is-nav id="nav_collapse">
+      <b-collapse is-nav id="nav_collapse" v-model="showCollapse">
         <b-navbar-nav>
           <b-nav-item>
             <router-link class="nav-link" :to="{name: 'home', params:{teams: this.standings}}">Home</router-link>
@@ -51,6 +51,7 @@
     },
     data() {
       return {
+        showCollapse: true,
         teams: [],
         standings: [],
         upcomingMatches: [],

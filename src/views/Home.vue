@@ -9,7 +9,7 @@
 
 <script>
   import Header from '@/components/Header.vue'
-  
+
 
   export default {
     name: 'home',
@@ -22,11 +22,11 @@
       }
     },
     methods: {
-      getTweet(){}
-      
+    
+
     },
     created() {
-
+      
     }
   }
 </script>
@@ -45,24 +45,24 @@
     background-size: contain;
     overflow: auto;
     height: 555px;
-    width: 98%; 
+    width: 98%;
   }
 
-  .teams {
-
-  }
+  .teams {}
 
   img {
     height: 25px;
     width: 25px;
   }
-  .uefa-pic{
+
+  .uefa-pic {
     height: 120px;
     width: 120px;
-     position: absolute;
+    position: absolute;
     bottom: 40px;
-    left: 110px;;
-   
+    left: 110px;
+    ;
+
   }
 
   @media only screen and (orientation: landscape) {
@@ -71,7 +71,8 @@
       background-size: contain;
       background-repeat: no-repeat;
     }
-    .home{
+
+    .home {
       height: 310px;
     }
   }

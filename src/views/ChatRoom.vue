@@ -1,5 +1,5 @@
 <template>
-    <div class="chat-room">
+    <div class="chat-room" style="-webkit-overflow-scrolling: touch;">
         <div class="chat-body">
             <Chat/>
         </div>
