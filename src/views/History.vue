@@ -1,15 +1,46 @@
 <template>
     <div class="history" style="-webkit-overflow-scrolling: touch;">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" v-model= "year" value="1956">
-            <label class="form-check-label" for="defaultCheck1">
-                50's
-                <p>{{year}}</p>
-            </label>
-        </div>
+        <!-- <div class="filter">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" v-model="year" value="1956">
+                <label class="form-check-label" for="defaultCheck1">
+                    50'S
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" v-model="year" value="1966">
+                <label class="form-check-label" for="defaultCheck1">
+                    60'S
+                </label>
+            </div>
+               <div class="form-check">
+                <input class="form-check-input" type="checkbox" v-model="year" value="1976">
+                <label class="form-check-label" for="defaultCheck1">
+                    70'S
+                </label>
+            </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" v-model="year" value="1986">
+                <label class="form-check-label" for="defaultCheck1">
+                    80'S
+                </label>
+            </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" v-model="year" value="1996">
+                <label class="form-check-label" for="defaultCheck1">
+                    90'S
+                </label>
+            </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" v-model="year" value="2006">
+                <label class="form-check-label" for="defaultCheck1">
+                    00'S
+                </label>
+            </div>
+        </div> -->
         <h5>The Finals through the years</h5>
         <div class="historic-matches">
-            <div class="historic-game" v-for="(match, index) in history" :key="index">
+            <div class="historic-game" v-for="(match, index) in pickMatch" :key="index">
                 <CardHist :matchInCard="match" />
             </div>
         </div>
@@ -82,18 +113,16 @@
         },
         computed: {
             pickMatch() {
-               var a = this.history.filter(match=>{
-                 let byYear = match.year == this.year[0]
-                    console.log(this.year)
-                    // console.log(match.year)
-                    // console.log(byYear)
-                    if(byYear == true){
-                        console.log(match)
-                        // return this.matches.push(match)
+                return this.history.filter(match => {
+                    let byYear = match.year == this.year[0]
+                    if (this.year.length == 0 || this.year.length == 6) {
+                        return this.history
+                    } else if (byYear == true) {
+                        return match
                     }
-                    
+
                 })
-        
+
             }
         }
     }
@@ -105,6 +134,14 @@
         height: 555px;
         width: 98%;
         margin-top: 5px;
+    }
+    .filter{
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 10px;
+    }
+    .form-check{
+        margin-right: 10px;;
     }
 
     .historic-matches {

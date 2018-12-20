@@ -22,7 +22,8 @@
       }
     },
     methods: {
-
+      getTweet(){}
+      
     },
     created() {
 

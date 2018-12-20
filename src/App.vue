@@ -28,9 +28,6 @@
           <b-nav-item>
             <router-link class="nav-link" :to="{ name: 'history', params: { history: this.history, extraInfo: this.extraTeamInfo}}">History</router-link>
           </b-nav-item>
-            <!-- <b-nav-item>
-            <router-link class="nav-link" :to="{ name: 'roster'}">Roster</router-link>
-          </b-nav-item> -->
         </b-navbar-nav>
 
         <b-navbar-nav class="ml-auto">
