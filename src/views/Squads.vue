@@ -1,8 +1,7 @@
 <template>
-    <div class="scorers">
+    <div class="scorers" style="-webkit-overflow-scrolling: touch;">
         <div class="top-scorers">
             <div class="teams" v-for="(team, index) in qTeams" :key="index">
-
                 <div v-if="!dataAreIn">
                     <img class="img" v-on:click="getId(team.id)" type="image" :src=team.crestUrl :id="team.id"/>
                 </div>
@@ -26,7 +25,8 @@
                 qTeams: [],
                 nextMatches: this.$route.params.nextMatches,
                 extraInfo: this.$route.params.extraInfo,
-                squad: []
+                squad: [],
+                colors:[]
             }
         },
         created() {
@@ -48,9 +48,12 @@
                         })
                         .then(response => response.json())
                         .then(response => {
+                            
                             this.squad = response.squad
+                            this.colors = response.clubColors
                            
-                            this.$router.push({ name: 'roster', params: {squad: this.squad } })
+                           
+                            this.$router.push({ name: 'roster', params: {squad: this.squad, colors: this.colors } })
                            
                         })
                         .catch(err => console.log(err));
@@ -128,8 +131,8 @@
             padding-left: 5px;
             background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
             margin: auto;
-            margin-bottom: 20px;
-            margin-top: 20px;
+            margin-bottom: 0px;
+            margin-top: 0px;
             border-radius: 10px;
             overflow: auto;
             display: flex;

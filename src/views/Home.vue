@@ -70,5 +70,8 @@
       background-size: contain;
       background-repeat: no-repeat;
     }
+    .home{
+      height: 310px;
+    }
   }
 </style>

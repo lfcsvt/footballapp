@@ -1,5 +1,5 @@
 <template>
-  <div class="chat">
+  <div class="chat" style="-webkit-overflow-scrolling: touch;">
       <Header msg2="Welcome to UCLchat"/>
     <b-button v-on:click="login()"> Login </b-button>
     <b-button v-on:click="logout()"> Logout </b-button>
@@ -142,7 +142,6 @@ width: 270px;
 height: 100px;
 background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
 border-radius: 10px;
-overflow: auto;
 margin: 10px;
 }
 </style>

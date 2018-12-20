@@ -1,59 +1,59 @@
 <template>
-    <div class="field">
+    <div class="field" style="-webkit-overflow-scrolling: touch;">
         <div class="goalkeeper">
             <p>q</p>
-            <p style="color: red">{{getGoal}}</p>
-            <h5 style="color: red">1</h5>
+            <p style="color: black">{{getGoal}}</p>
+            <h5 style="color: black">1</h5>
         </div>
         <div class="right-wing">
             <p>q</p>
-            <p style="color: red">{{getRightWing}}</p>
-            <h5 style="color: red">2</h5>
+            <p style="color: black">{{getRightWing}}</p>
+            <h5 style="color: black">2</h5>
         </div>
         <div class="left-wing">
             <p>q</p>
-            <p style="color: red">{{getLeftWing}}</p>
-            <h5 style="color: red">6</h5>
+            <p style="color: black">{{getLeftWing}}</p>
+            <h5 style="color: black">6</h5>
         </div>
         <div class="left-back">
             <p>q</p>
-            <p style="color: red">{{getCenterBack}}</p>
-            <h5 style="color: red">3</h5>
+            <p style="color: black">{{getCenterBack}}</p>
+            <h5 style="color: black">3</h5>
         </div>
         <div class="center-back">
             <p>q</p>
-            <p style="color: red">{{getLeftBack}}</p>
-            <h5 style="color: red">4</h5>
+            <p style="color: black">{{getLeftBack}}</p>
+            <h5 style="color: black">4</h5>
         </div>
         <div class="defensive-midfield">
             <p>q</p>
-            <p style="color: red">{{getMidDef}}</p>
-            <h5 style="color: red">5</h5>
+            <p style="color: black">{{getMidDef}}</p>
+            <h5 style="color: black">5</h5>
         </div>
         <div class="right-midfield">
             <p>q</p>
-            <p style="color: red">{{getMidRig}}</p>
-            <h5 style="color: red">8</h5>
+            <p style="color: black">{{getMidRig}}</p>
+            <h5 style="color: black">8</h5>
         </div>
         <div class="left-midfield">
             <p>q</p>
-            <p style="color: red">{{getMidLef}}</p>
-            <h5 style="color: red">10</h5>
+            <p style="color: black">{{getMidLef}}</p>
+            <h5 style="color: black">10</h5>
         </div>
         <div class="left-wingger">
             <p>q</p>
-            <p style="color: red">{{getLefWin}}</p>
-            <h5 style="color: red">11</h5>
+            <p style="color: black">{{getLefWin}}</p>
+            <h5 style="color: black">11</h5>
         </div>
         <div class="right-wingger">
             <p>q</p>
-            <p style="color: red">{{getRigWin}}</p>
-            <h5 style="color: red">7</h5>
+            <p style="color: black">{{getRigWin}}</p>
+            <h5 style="color: black">7</h5>
         </div>
         <div class="forward">
             <p>q</p>
-            <p style="color: red">{{getNine}}</p>
-            <h5 style="color: red">9</h5>
+            <p style="color: black">{{getNine}}</p>
+            <h5 style="color: black">9</h5>
         </div>
     </div>
 </template>
@@ -62,7 +62,8 @@
         name: 'roster',
         data() {
             return {
-                squad: this.$route.params.squad
+                squad: this.$route.params.squad,
+                colors: this.$route.params.colors
             }
         },
 
@@ -76,58 +77,124 @@
         computed: {
             getGoal() {
                 var a = this.squad.filter(player => player.shirtNumber == 1)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Goalkeeper")
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getRightWing() {
                 var a = this.squad.filter(player => player.shirtNumber == 2)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Defender")
+                    var name = a[1].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getLeftWing() {
                 var a = this.squad.filter(player => player.shirtNumber == 6)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Defender")
+                    var name = a[2].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getLeftBack() {
                 var a = this.squad.filter(player => player.shirtNumber == 4)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Defender")
+                    var name = a[1].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getCenterBack() {
                 var a = this.squad.filter(player => player.shirtNumber == 3)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Defender")
+                    var name = a[3].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getMidDef() {
                 var a = this.squad.filter(player => player.shirtNumber == 5)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Midfielder")
+                    var name = a[2].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getMidLef() {
                 var a = this.squad.filter(player => player.shirtNumber == 10)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Midfielder")
+                    var name = a[2].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getMidRig() {
                 var a = this.squad.filter(player => player.shirtNumber == 8)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Midfielder")
+                    var name = a[3].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getRigWin() {
                 var a = this.squad.filter(player => player.shirtNumber == 7)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Attacker")
+                    var name = a[1].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getLefWin() {
                 var a = this.squad.filter(player => player.shirtNumber == 11)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Attacker")
+                    var name = a[2].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             },
             getNine() {
                 var a = this.squad.filter(player => player.shirtNumber == 9)
-                var name = a[0].name.split(' ')
-                return name.slice(-1).pop()
+                if (a.length != 0) {
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                } else {
+                    var a = this.squad.filter(player => player.position == "Attacker")
+                    var name = a[0].name.split(' ')
+                    return name.slice(-1).pop()
+                }
             }
 
 
@@ -139,6 +206,7 @@
     img {
         height: 80px;
         width: 80px;
+
     }
 
     .field {
@@ -156,7 +224,6 @@
         left: 150px;
         height: 80px;
         width: 80px;
-        z-index: 0;
     }
 
     .right-wing {

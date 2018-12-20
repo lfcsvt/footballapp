@@ -1,12 +1,19 @@
 <template>
     <div class="history" style="-webkit-overflow-scrolling: touch;">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" v-model= "year" value="1956">
+            <label class="form-check-label" for="defaultCheck1">
+                50's
+                <p>{{year}}</p>
+            </label>
+        </div>
         <h5>The Finals through the years</h5>
         <div class="historic-matches">
             <div class="historic-game" v-for="(match, index) in history" :key="index">
                 <CardHist :matchInCard="match" />
             </div>
         </div>
-         <h5>The Champions</h5>
+        <h5>The Champions</h5>
         <div class="historic-champios">
             <div class="historic-champions" v-for="(champ, index) in champs" :key="index">
                 <Champions :cardChamp="champ" />
@@ -35,12 +42,15 @@
             return {
                 history: this.$route.params.history,
                 champs: [],
-                nationChamps: []
+                nationChamps: [],
+                year: [],
+                option: 'all'
             }
         },
         created() {
             this.mostChampions()
             this.champNations()
+            console.log(this.history)
         },
         methods: {
             mostChampions() {
@@ -56,7 +66,7 @@
                     return b.wins - a.wins
                 });
             },
-             champNations() {
+            champNations() {
                 var arr = []
                 this.history.forEach(item => {
                     arr.push(item.nation1)
@@ -68,6 +78,22 @@
                 return this.nationChamps.sort(function (a, b) {
                     return b.tittles - a.tittles
                 });
+            }
+        },
+        computed: {
+            pickMatch() {
+               var a = this.history.filter(match=>{
+                 let byYear = match.year == this.year[0]
+                    console.log(this.year)
+                    // console.log(match.year)
+                    // console.log(byYear)
+                    if(byYear == true){
+                        console.log(match)
+                        // return this.matches.push(match)
+                    }
+                    
+                })
+        
             }
         }
     }
@@ -89,15 +115,17 @@
         justify-content: space-between;
         margin-bottom: 10px;
     }
-    .historic-champios{
-         height: 160px;
+
+    .historic-champios {
+        height: 160px;
         width: 100%;
         overflow: auto;
         display: flex;
         justify-content: space-between;
         margin-bottom: 15px;
     }
-    .historic-champions{
+
+    .historic-champions {
         height: 155px;
     }
 
@@ -105,7 +133,8 @@
         width: 260px;
         height: 200px;
     }
-    .champion-nations{
+
+    .champion-nations {
         height: 160px;
         width: 100%;
         overflow: auto;
@@ -122,15 +151,16 @@
     p {
         color: white;
     }
-     @media only screen and (orientation: landscape) {
-              .history {
-        background-size: contain;
-        overflow: auto;
-        height: 313px;
-        width: 660px;
-        margin: 10px;
-        margin-top: 5px;
+
+    @media only screen and (orientation: landscape) {
+        .history {
+            background-size: contain;
+            overflow: auto;
+            height: 313px;
+            width: 660px;
+            margin: 10px;
+            margin-top: 5px;
+        }
+
     }
-  
-  }
 </style>
