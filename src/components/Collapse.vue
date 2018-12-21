@@ -21,13 +21,6 @@ export default {
             var a = this.extraInfo.filter(team=> team.id == this.match.homeTeam.id )
             return a[0].mapSrc
         }
-    },
-    created(){
-        // console.log(this.match.homeTeam.id)
-        this.collapse
-    },
-    methods:{
-
     }
 }
 </script>

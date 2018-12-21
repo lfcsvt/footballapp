@@ -12,7 +12,7 @@
             <th>P</th>
         </thead>
     <tbody>
-        <tr v-for="team in group">
+        <tr v-for="(team, index) in group" :key="index">
         <td v-if="team.team.crestUrl != null" style="align: left"><img :src=team.team.crestUrl alt="">   {{team.team.name}}</td>
         <td v-else>{{team.team.name}}</td>
         <td>{{team.playedGames}}</td>

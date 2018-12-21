@@ -6,16 +6,6 @@
                <p>{{matchInCard.score}}</p>
                <p>{{matchInCard.runnersUp}}</p>
           </div>
-           <!-- <div class="extra-info-header">
-              <p>Nation</p>
-              <p>Season</p>
-              <p>Nation</p>
-          </div>
-          <div class="extra-info">
-              <p>{{matchInCard.nation1}}</p>
-              <p>{{matchInCard.season}}</p>
-              <p>{{matchInCard.nation2}}</p>
-          </div> -->
           <div class="venue-info">
                <p>Venue: {{matchInCard.venue}}</p>
           </div>
