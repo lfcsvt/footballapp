@@ -11,7 +11,7 @@
       </div>
       <hr>
     </div>
-    <hr>
+    <!-- <hr> -->
        <div class="message-room" v-chat-scroll>
           <div class="message" v-for="(msg, index) in messages" :key="index">
         <p>{{msg.name}}</p>

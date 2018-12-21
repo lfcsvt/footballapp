@@ -1,5 +1,6 @@
 <template>
     <div class="history" style="-webkit-overflow-scrolling: touch;">
+        <h5>The Finals through the years</h5>
         <div class="filter">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" v-model="years" value= "1956 1957 1958 1959">
@@ -38,7 +39,7 @@
                 </label>
             </div>
         </div>
-        <h5>The Finals through the years</h5>
+        <!-- <h5>The Finals through the years</h5> -->
         <div class="historic-matches">
             <div class="historic-game" v-for="(match, index) in pickMatch" :key="index">
                 <CardHist :matchInCard="match" />
@@ -121,7 +122,7 @@
                     })
                 })
                 if(this.years.length > 0){
-                    return arr
+                    return arr.sort((a,b)=> a.year - b.year)
                 } else{
                     return this.history
                 }
@@ -139,7 +140,7 @@
     }
     .filter{
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-around;
         padding-left: 10px;
     }
     .form-check{
@@ -190,6 +191,9 @@
     p {
         color: white;
     }
+    .form-check-label{
+        color: white;
+    }
 
     @media only screen and (orientation: landscape) {
         .history {
@@ -200,6 +204,10 @@
             margin: 10px;
             margin-top: 5px;
         }
-
+           .filter{
+        display: flex;
+        justify-content: space-around;
+        padding-left: 10px;
+    }
     }
 </style>

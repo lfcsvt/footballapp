@@ -68,7 +68,7 @@
   @media only screen and (orientation: landscape) {
     body {
       background-image: url(../assets/uefa1.jpg);
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
     }
 
