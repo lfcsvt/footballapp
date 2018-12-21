@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h4>{{ msg2 }}</h4>
+    <h5>{{ msg2 }}</h5>
   
   </div>
 </template>
@@ -30,7 +30,7 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-h1,h2,h3,h4 {
+h1,h2,h3,h4,h5 {
   color: white;
   text-align: center;
 }

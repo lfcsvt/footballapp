@@ -1,43 +1,43 @@
 <template>
     <div class="history" style="-webkit-overflow-scrolling: touch;">
-        <!-- <div class="filter">
+        <div class="filter">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="year" value="1956">
+                <input class="form-check-input" type="checkbox" v-model="years" value= "1956 1957 1958 1959">
                 <label class="form-check-label" for="defaultCheck1">
                     50'S
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="year" value="1966">
+                <input class="form-check-input" type="checkbox" v-model="years" value="1960 1961 1962 1963 1964 1965 1966 1967 1968 1969">
                 <label class="form-check-label" for="defaultCheck1">
                     60'S
                 </label>
             </div>
                <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="year" value="1976">
+                <input class="form-check-input" type="checkbox" v-model="years" value="1970 1971 1972 1973 1974 1975 1976 1977 1978 1979">
                 <label class="form-check-label" for="defaultCheck1">
                     70'S
                 </label>
             </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="year" value="1986">
+                <input class="form-check-input" type="checkbox" v-model="years" value="1980 1981 1982 1983 1984 1985 1986 1987 1988 1989">
                 <label class="form-check-label" for="defaultCheck1">
                     80'S
                 </label>
             </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="year" value="1996">
+                <input class="form-check-input" type="checkbox" v-model="years" value="1990 1991 1992 1993 1994 1995 1996 1997 1998 1999">
                 <label class="form-check-label" for="defaultCheck1">
                     90'S
                 </label>
             </div>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="year" value="2006">
+                <input class="form-check-input" type="checkbox" v-model="years" value="2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015">
                 <label class="form-check-label" for="defaultCheck1">
                     00'S
                 </label>
             </div>
-        </div> -->
+        </div>
         <h5>The Finals through the years</h5>
         <div class="historic-matches">
             <div class="historic-game" v-for="(match, index) in pickMatch" :key="index">
@@ -74,14 +74,13 @@
                 history: this.$route.params.history,
                 champs: [],
                 nationChamps: [],
-                year: [],
+                years: [],
                 option: 'all'
             }
         },
         created() {
             this.mostChampions()
             this.champNations()
-            console.log(this.history)
         },
         methods: {
             mostChampions() {
@@ -113,16 +112,19 @@
         },
         computed: {
             pickMatch() {
-                return this.history.filter(match => {
-                    let byYear = match.year == this.year[0]
-                    if (this.year.length == 0 || this.year.length == 6) {
-                        return this.history
-                    } else if (byYear == true) {
-                        return match
-                    }
-
+               let arr = []
+                let a = this.years.forEach(year => {
+                    let b = year.split(' ')
+                    b.forEach(el => {
+                       let c =  this.history.filter(match => match.year == el)
+                       arr.push(c[0])
+                    })
                 })
-
+                if(this.years.length > 0){
+                    return arr
+                } else{
+                    return this.history
+                }
             }
         }
     }

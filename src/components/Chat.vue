@@ -53,9 +53,11 @@ export default {
           var user = result.user;
           // let user = firebase.auth().currentUser;
           this.user = user;
+          
           console.log(user);
           console.log(user.displayName);
           console.log(user.email);
+          
         })
         .catch(function(error) {
           alert("error" + error.message);
@@ -74,7 +76,7 @@ export default {
         .auth()
         .signOut()
         .then(function() {
-          console.log("Sign-out successful");
+        console.log("Sign-out successful");
           
         })
         .catch(function(error) {
@@ -86,7 +88,8 @@ export default {
       if(this.user == null){
         alert('You must be logged in to use the chat.')
       }else {
-         console.log(this.user.displayName);
+     
+      console.log(this.user.displayName);
       console.log(this.msg);
       const post = {
         name: this.user.displayName,
@@ -121,14 +124,16 @@ export default {
 </script>
 <style scoped>
 button {
-  margin: 30px;
+  margin: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 .chat{
-height: 350px;
+height: 150px;
 }
 .message-room{
 width: 300px;
-max-height: 220px;
+max-height: 320px;
 overflow: auto;
 padding-bottom: 20px;
 
@@ -142,6 +147,7 @@ width: 270px;
 height: 100px;
 background-image: linear-gradient(-225deg, rgba(0, 101, 168, 0.6) 0%, rgba(0, 36, 61, 0.6) 50%);
 border-radius: 10px;
-margin: 10px;
+margin: 5px;
+padding-bottom: 5px;
 }
 </style>
